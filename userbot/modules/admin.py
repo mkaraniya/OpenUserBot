@@ -26,16 +26,16 @@ from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot
 from userbot.events import register
 
 # =================== CONSTANT ===================
-PP_TOO_SMOL = "`The image is too small`"
-PP_ERROR = "`Failure while processing the image`"
-NO_ADMIN = "`I am not an admin!`"
-NO_PERM = "`I don't have sufficient permissions!`"
-NO_SQL = "`Running on Non-SQL mode!`"
+PP_TOO_SMOL = "`Gambar terlalu kecil`"
+PP_ERROR = "`Gagal ketika memproses gambar`"
+NO_ADMIN = "`Saya bukan admin!`"
+NO_PERM = "`Saya tidak memiliki ijin yang cukup!`"
+NO_SQL = "`Berjalan pada mode Non-SQL!`"
 
-CHAT_PP_CHANGED = "`Chat Picture Changed`"
-CHAT_PP_ERROR = "`Some issue with updating the pic,`" \
-                "`maybe coz I'm not an admin,`" \
-                "`or don't have enough rights.`"
+CHAT_PP_CHANGED = "`Gambar chat telah diubah`"
+CHAT_PP_ERROR = "`Beberapa masalah ketika memperbarui gambar,`" \
+                "`mungkin karena saya bukan admin,`" \
+                "`atau tidak memiliki ijin yang cukup.`"
 INVALID_MEDIA = "`Invalid Extension`"
 
 BANNED_RIGHTS = ChatBannedRights(
@@ -223,7 +223,7 @@ async def ban(bon):
         return
 
     # Announce that we're going to whack the pest
-    await bon.edit("`Whacking the pest!`")
+    await bon.edit("`⛏ Sedang memblokir pengguna...!`")
 
     try:
         await bon.client(EditBannedRequest(bon.chat_id, user.id,
@@ -244,9 +244,9 @@ async def ban(bon):
     # is done gracefully
     # Shout out the ID, so that fedadmins can fban later
     if reason:
-        await bon.edit(f"`{str(user.id)}` was banned !!\nReason: {reason}")
+        await bon.edit(f"`{str(user.id)}` sudah diblokir !!\nAlasan: {reason}")
     else:
-        await bon.edit(f"`{str(user.id)}` was banned !!")
+        await bon.edit(f"`{str(user.id)}` sudah diblokir !!")
     # Announce to the logging group if we have banned the person
     # successfully!
     if BOTLOG:
@@ -282,7 +282,7 @@ async def nothanos(unbon):
     try:
         await unbon.client(
             EditBannedRequest(unbon.chat_id, user.id, UNBAN_RIGHTS))
-        await unbon.edit("```Unbanned Successfully```")
+        await unbon.edit("```Unbanned Berhasil```")
 
         if BOTLOG:
             await unbon.client.send_message(
@@ -525,7 +525,7 @@ async def rm_deletedacc(show):
 
     con = show.pattern_match.group(1).lower()
     del_u = 0
-    del_status = "`No deleted accounts found, Group is clean`"
+    del_status = "`Tidak ada akun terhapus ditemukan, Grup ini bersih 🥳`"
 
     if con != "clean":
         await show.edit("`Searching for ghost/deleted/zombie accounts...`")
@@ -671,10 +671,10 @@ async def kick(usr):
 
     user, reason = await get_user_from_event(usr)
     if not user:
-        await usr.edit("`Couldn't fetch user.`")
+        await usr.edit("`Gagal mendapatkan user.`")
         return
 
-    await usr.edit("`Kicking...`")
+    await usr.edit("`Sedang mencoba menendang mereka ...`")
 
     try:
         await usr.client.kick_participant(usr.chat_id, user.id)
@@ -685,11 +685,11 @@ async def kick(usr):
 
     if reason:
         await usr.edit(
-            f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`\nReason: {reason}"
+            f"`Telah ditendang` [{user.first_name}](tg://user?id={user.id})`!`\nAlasan: {reason}"
         )
     else:
         await usr.edit(
-            f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`")
+            f"`Telah ditendang` [{user.first_name}](tg://user?id={user.id})`!`")
 
     if BOTLOG:
         await usr.client.send_message(
