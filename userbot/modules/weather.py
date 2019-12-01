@@ -122,15 +122,15 @@ async def get_weather(weather):
         return xx
 
     await weather.edit(
-        f"**Temperature:** `{celsius(curtemp)}°C | {fahrenheit(curtemp)}°F`\n"
+        f"**Suhu:** `{celsius(curtemp)}°C | {fahrenheit(curtemp)}°F`\n"
         +
-        f"**Min. Temp.:** `{celsius(min_temp)}°C | {fahrenheit(min_temp)}°F`\n"
+        f"**Suhu Min.:** `{celsius(min_temp)}°C | {fahrenheit(min_temp)}°F`\n"
         +
-        f"**Max. Temp.:** `{celsius(max_temp)}°C | {fahrenheit(max_temp)}°F`\n"
-        + f"**Humidity:** `{humidity}%`\n" +
-        f"**Wind:** `{kmph[0]} kmh | {mph[0]} mph, {findir}`\n" +
-        f"**Sunrise:** `{sun(sunrise)}`\n" +
-        f"**Sunset:** `{sun(sunset)}`\n\n" + f"**{desc}**\n" +
+        f"**Suhu Max.:** `{celsius(max_temp)}°C | {fahrenheit(max_temp)}°F`\n"
+        + f"**Kelembapan:** `{humidity}%`\n" +
+        f"**Kecepatan Angin:** `{kmph[0]} kmh | {mph[0]} mph, {findir}`\n" +
+        f"**Matahari Terbit:** `{sun(sunrise)}`\n" +
+        f"**Matahari Terbenam:** `{sun(sunset)}`\n\n" + f"**{desc}**\n" +
         f"`{cityname}, {fullc_n}`\n" + f"`{time}`")
 
 
