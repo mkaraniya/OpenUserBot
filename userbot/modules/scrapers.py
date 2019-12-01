@@ -43,8 +43,8 @@ from telethon.tl.types import DocumentAttributeAudio
 from userbot.modules.upload_download import progress, humanbytes, time_formatter
 
 CARBONLANG = "auto"
-TTS_LANG = "en"
-TRT_LANG = "en"
+TTS_LANG = "id"
+TRT_LANG = "id"
 
 
 @register(outgoing=True, pattern="^.crblang (.*)")
@@ -57,7 +57,7 @@ async def setlang(prog):
 @register(outgoing=True, pattern="^.carbon")
 async def carbon_api(e):
     """ A Wrapper for carbon.now.sh """
-    await e.edit("`Processing..`")
+    await e.edit("`Sedang memproses..`")
     CARBON = 'https://carbon.now.sh/?l={lang}&code={code}'
     global CARBONLANG
     textx = await e.get_reply_message()
@@ -67,7 +67,7 @@ async def carbon_api(e):
     elif textx:
         pcode = str(textx.message)  # Importing message to module
     code = quote_plus(pcode)  # Converting to urlencoded
-    await e.edit("`Processing..\n25%`")
+    await e.edit("`Memproses..\n25%`")
     if os.path.isfile("./carbon.png"):
         os.remove("./carbon.png")
     url = CARBON.format(code=code, lang=CARBONLANG)
@@ -83,7 +83,7 @@ async def carbon_api(e):
     driver = webdriver.Chrome(executable_path=CHROME_DRIVER,
                               options=chrome_options)
     driver.get(url)
-    await e.edit("`Processing..\n50%`")
+    await e.edit("`Memproses..\n50%`")
     download_path = './'
     driver.command_executor._commands["send_command"] = (
         "POST", '/session/$sessionId/chromium/send_command')
@@ -98,18 +98,18 @@ async def carbon_api(e):
     driver.find_element_by_xpath("//button[contains(text(),'Export')]").click()
     driver.find_element_by_xpath("//button[contains(text(),'4x')]").click()
     driver.find_element_by_xpath("//button[contains(text(),'PNG')]").click()
-    await e.edit("`Processing..\n75%`")
+    await e.edit("`Memproses..\n75%`")
     # Waiting for downloading
     while not os.path.isfile("./carbon.png"):
         await sleep(0.5)
-    await e.edit("`Processing..\n100%`")
+    await e.edit("`Memproses..\n100%`")
     file = './carbon.png'
-    await e.edit("`Uploading..`")
+    await e.edit("`Mengupload..`")
     await e.client.send_file(
         e.chat_id,
         file,
-        caption="Made using [Carbon](https://carbon.now.sh/about/),\
-        \na project by [Dawn Labs](https://dawnlabs.io/)",
+        caption="Dibuat menggunakan [Carbon](https://carbon.now.sh/about/),\
+        \na Projek oleh [Dawn Labs](https://dawnlabs.io/)",
         force_document=True,
         reply_to=e.message.reply_to_msg_id,
     )
@@ -123,7 +123,7 @@ async def carbon_api(e):
 @register(outgoing=True, pattern="^.img (.*)")
 async def img_sampler(event):
     """ For .img command, search and return images matching the query. """
-    await event.edit("Processing...")
+    await event.edit("Sedang memproses...")
     query = event.pattern_match.group(1)
     lim = findall(r"lim=\d+", query)
     try:
@@ -202,7 +202,7 @@ async def gsearch(q_event):
             msg += f"[{title}]({link})\n`{desc}`\n\n"
         except IndexError:
             break
-    await q_event.edit("**Search Query:**\n`" + match + "`\n\n**Results:**\n" +
+    await q_event.edit("**Kata Kunci Pencarian:**\n`" + match + "`\n\n**Hasil Pencarian:**\n" +
                        msg,
                        link_preview=False)
 
@@ -239,7 +239,7 @@ async def wiki(wiki_q):
         if os.path.exists("output.txt"):
             os.remove("output.txt")
         return
-    await wiki_q.edit("**Search:**\n`" + match + "`\n\n**Result:**\n" + result)
+    await wiki_q.edit("**Cari:**\n`" + match + "`\n\n**Hasil:**\n" + result)
     if BOTLOG:
         await wiki_q.client.send_message(
             BOTLOG_CHATID, f"Wiki query `{match}` was executed successfully")
@@ -248,7 +248,7 @@ async def wiki(wiki_q):
 @register(outgoing=True, pattern="^.ud (.*)")
 async def urban_dict(ud_e):
     """ For .ud command, fetch content from Urban Dictionary. """
-    await ud_e.edit("Processing...")
+    await ud_e.edit("Memproses...")
     query = ud_e.pattern_match.group(1)
     try:
         define(query)
@@ -411,7 +411,7 @@ async def imdb(e):
                      link_preview=True,
                      parse_mode='HTML')
     except IndexError:
-        await e.edit("Plox enter **Valid movie name** kthx")
+        await e.edit("Mohon masukkan **Nama Film** yang valid")
 
 
 @register(outgoing=True, pattern=r"^.trt(?: |$)([\s\S]*)")
@@ -425,18 +425,18 @@ async def translateme(trans):
     elif textx:
         message = textx.text
     else:
-        await trans.edit("`Give a text or reply to a message to translate!`")
+        await trans.edit("`Berikan sebuah teks atau balas pesan untuk menerjemahkan!`")
         return
 
     try:
         reply_text = translator.translate(deEmojify(message), dest=TRT_LANG)
     except ValueError:
-        await trans.edit("Invalid destination language.")
+        await trans.edit("Bahasa tujuan tidak valid.")
         return
 
     source_lan = LANGUAGES[f'{reply_text.src.lower()}']
     transl_lan = LANGUAGES[f'{reply_text.dest.lower()}']
-    reply_text = f"From **{source_lan.title()}**\nTo **{transl_lan.title()}:**\n\n{reply_text.text}"
+    reply_text = f"Dari **{source_lan.title()}**\nKe **{transl_lan.title()}:**\n\n{reply_text.text}"
 
     await trans.edit(reply_text)
     if BOTLOG:
