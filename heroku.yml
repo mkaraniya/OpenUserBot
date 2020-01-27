@@ -1,5 +1,6 @@
 build: 
   docker:
       worker: Dockerfile
+      web: Dockerfile1
 run:
    worker: python3 -m userbot
