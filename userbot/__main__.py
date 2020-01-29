@@ -14,13 +14,6 @@ from userbot import LOGS, bot
 from userbot.modules import ALL_MODULES
 
 
-async def set_biograph(setbio):
-    """ For .setbio command, set a new bio for your profile in Telegram. """
-    newbio = ("Jestem kozakiem")
-    await setbio.client(UpdateProfileRequest(about=newbio))
-    await setbio.edit(BIO_SUCCESS)
-    quit(1)
-
 INVALID_PH = '\nERROR: The Phone No. entered is INVALID' \
              '\nTip: Use Country Code along with number.' \
              '\nor check your phone number and try again !'

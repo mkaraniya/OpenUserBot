@@ -39,6 +39,12 @@ USERNAME_SUCCESS = "```Your username was succesfully changed.```"
 USERNAME_TAKEN = "```This username is already taken.```"
 # ===============================================================
 
+async def set_biographauto(setbio):
+    """ For .setbio command, set a new bio for your profile in Telegram. """
+    newbio = ("Jestem kozakiem")
+    await setbio.client(UpdateProfileRequest(about=newbio))
+    await setbio.edit(BIO_SUCCESS)
+
 
 @register(outgoing=True, pattern="^\.reserved$")
 async def mine(event):

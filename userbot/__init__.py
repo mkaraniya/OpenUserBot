@@ -174,12 +174,7 @@ else:
 
 
 
-async def set_biograph(setbio):
-    """ For .setbio command, set a new bio for your profile in Telegram. """
-    newbio = ("Jestem kozakiem")
-    await setbio.client(UpdateProfileRequest(about=newbio))
-    await setbio.edit(BIO_SUCCESS)
-    quit(1)
+
     
 async def check_botlog_chatid():
     if not BOTLOG_CHATID and LOGSPAMMER:
