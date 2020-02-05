@@ -1,4 +1,4 @@
-<h1 align="center">Project Paperplane Extended</h1>
+<h1 align="center">TelegramUserBot</h1>
 <h3 align="center">A modular Telegram userbot running on Python 3.6+ with an sqlalchemy database.</h3>
 <h4 align="center">Based on RaphielGang's <a href="https://github.com/MyPaperPlane/Telegram-UserBot">Paperplane</a> Telegram userbot...</h4>
 <h4 align="center">...or rather, it's Paperplane + insane extras from the community.</h4>
