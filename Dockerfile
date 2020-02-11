@@ -48,6 +48,7 @@ RUN apk add --no-cache --update \
     sudo \
     zlib-dev \
     mc \
+    lynx \
     python-dev
 
 
