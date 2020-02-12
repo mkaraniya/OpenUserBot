@@ -76,7 +76,7 @@ async def get_weather(weather):
                 return
             CITY = newcity[0].strip() + "," + countrycode.strip()
 
-    url = f'https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={APPID}'
+    url = f'https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={APPID}&lang=pl'
     request = get(url)
     result = json.loads(request.text)
 
@@ -90,7 +90,7 @@ async def get_weather(weather):
     min_temp = result['main']['temp_min']
     max_temp = result['main']['temp_max']
     desc = result['weather'][0]
-    desc = desc['main']
+    desc = desc['description']
     country = result['sys']['country']
     sunrise = result['sys']['sunrise']
     sunset = result['sys']['sunset']
@@ -98,7 +98,7 @@ async def get_weather(weather):
     winddir = result['wind']['deg']
 
     ctimezone = tz(c_tz[country][0])
-    time = datetime.now(ctimezone).strftime("%A, %I:%M %p")
+    time = datetime.now(ctimezone).strftime("%A, %H:%M")
     fullc_n = c_n[f"{country}"]
 
     dirs = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
@@ -118,24 +118,25 @@ async def get_weather(weather):
         return temp[0]
 
     def sun(unix):
-        xx = datetime.fromtimestamp(unix, tz=ctimezone).strftime("%I:%M %p")
+        xx = datetime.fromtimestamp(unix, tz=ctimezone).strftime("%H:%M")
         return xx
 
     await weather.edit(
-        f"**Temperature:** `{celsius(curtemp)}°C | {fahrenheit(curtemp)}°F`\n"
+        f"**Temperatura:** `{celsius(curtemp)}°C | {fahrenheit(curtemp)}°F`\n"
         +
         f"**Min. Temp.:** `{celsius(min_temp)}°C | {fahrenheit(min_temp)}°F`\n"
         +
         f"**Max. Temp.:** `{celsius(max_temp)}°C | {fahrenheit(max_temp)}°F`\n"
-        + f"**Humidity:** `{humidity}%`\n" +
-        f"**Wind:** `{kmph[0]} kmh | {mph[0]} mph, {findir}`\n" +
-        f"**Sunrise:** `{sun(sunrise)}`\n" +
-        f"**Sunset:** `{sun(sunset)}`\n\n" + f"**{desc}**\n" +
+        + f"**Wilgotność:** `{humidity}%`\n" +
+        f"**Wiatr:** `{kmph[0]} kmh | {mph[0]} mph, {findir}`\n" +
+        f"**Wschód słońca:** `{sun(sunrise)}`\n" +
+        f"**Zachód słońca:** `{sun(sunset)}`\n\n" + 
+        f"**{desc}**\n\n" +
         f"`{cityname}, {fullc_n}`\n" + f"`{time}`")
 
 
 CMD_HELP.update({
     "weather":
-    ".weather <city> or .weather <city>, <country name/code>\
-    \nUsage: Gets the weather of a city."
+    ".weather <miasto> lub .weather <miasto>, <kraj nazwa/kod>\
+    \nUżycie: Wyświetla pogodę dla zadanego miejsca."
 })
