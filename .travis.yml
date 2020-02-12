@@ -1,9 +1,0 @@
-dist: bionic
-language: bash
-sudo: true
-
-services:
-  - docker
-  
-script:
-- docker build . --tag test

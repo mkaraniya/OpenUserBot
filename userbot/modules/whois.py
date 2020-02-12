@@ -17,19 +17,11 @@ from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
 from userbot.events import register
 
 
-<<<<<<< HEAD
 @register(pattern=".whois(?: |$)(.*)", outgoing=True)
 async def who(event):
 
     await event.edit(
         "`Sit tight while I steal some data from *Global Network Zone*...`")
-=======
-@register(pattern="^\.whois(?: |$)(.*)", outgoing=True)
-async def who(event):
-
-    await event.edit(
-        "`Sit tight while I steal some data from Mark Zuckerburg...`")
->>>>>>> TelegramUserBot/master
 
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
@@ -158,9 +150,5 @@ async def fetch_info(replied_user, event):
 CMD_HELP.update({
     "whois":
     ".whois <username> or reply to someones text with .whois\
-<<<<<<< HEAD
     \nUsage: Gets info of an user."
-=======
-    \nUżycie: Gets info of an user."
->>>>>>> TelegramUserBot/master
 })

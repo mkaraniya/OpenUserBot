@@ -9,11 +9,7 @@ from userbot import CMD_HELP
 from userbot.events import register
 
 
-<<<<<<< HEAD
 @register(outgoing=True, pattern="^.help(?: |$)(.*)")
-=======
-@register(outgoing=True, pattern="^\.help(?: |$)(.*)")
->>>>>>> TelegramUserBot/master
 async def help(event):
     """ For .help command,"""
     args = event.pattern_match.group(1).lower()

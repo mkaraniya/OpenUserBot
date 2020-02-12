@@ -18,17 +18,10 @@ from telethon.tl.functions.channels import (EditAdminRequest,
                                             EditBannedRequest,
                                             EditPhotoRequest)
 from telethon.tl.functions.messages import UpdatePinnedMessageRequest
-<<<<<<< HEAD
 from telethon.tl.types import (PeerChannel, ChannelParticipantsAdmins,
                                ChatAdminRights, ChatBannedRights,
                                MessageEntityMentionName, MessageMediaPhoto,
                                ChannelParticipantsBots)
-=======
-from telethon.tl.types import (PeerChat, PeerChannel,
-                               ChannelParticipantsAdmins, ChatAdminRights,
-                               ChatBannedRights, MessageEntityMentionName,
-                               MessageMediaPhoto, ChannelParticipantsBots)
->>>>>>> TelegramUserBot/master
 
 from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot
 from userbot.events import register
@@ -75,11 +68,7 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 # ================================================
 
 
-<<<<<<< HEAD
 @register(outgoing=True, pattern="^.setgpic$")
-=======
-@register(outgoing=True, pattern="^\.setgpic$", groups_only=True)
->>>>>>> TelegramUserBot/master
 async def set_group_photo(gpic):
     """ For .setgpic command, changes the picture of a group """
     if not gpic.is_group:
@@ -116,11 +105,7 @@ async def set_group_photo(gpic):
             await gpic.edit(PP_ERROR)
 
 
-<<<<<<< HEAD
 @register(outgoing=True, pattern="^.promote(?: |$)(.*)")
-=======
-@register(outgoing=True, pattern="^\.promote(?: |$)(.*)", groups_only=True)
->>>>>>> TelegramUserBot/master
 async def promote(promt):
     """ For .promote command, promotes the replied/tagged person """
     # Get targeted chat
@@ -144,12 +129,7 @@ async def promote(promt):
     await promt.edit("`Promoting...`")
     user, rank = await get_user_from_event(promt)
     if not rank:
-<<<<<<< HEAD
         rank = "Administrator"  # Just in case.
-=======
-        # Just in case.
-        rank = "admeme"
->>>>>>> TelegramUserBot/master
     if user:
         pass
     else:
@@ -175,11 +155,7 @@ async def promote(promt):
             f"CHAT: {promt.chat.title}(`{promt.chat_id}`)")
 
 
-<<<<<<< HEAD
 @register(outgoing=True, pattern="^.demote(?: |$)(.*)")
-=======
-@register(outgoing=True, pattern="^\.demote(?: |$)(.*)", groups_only=True)
->>>>>>> TelegramUserBot/master
 async def demote(dmod):
     """ For .demote command, demotes the replied/tagged person """
     # Admin right check
@@ -228,11 +204,7 @@ async def demote(dmod):
             f"CHAT: {dmod.chat.title}(`{dmod.chat_id}`)")
 
 
-<<<<<<< HEAD
 @register(outgoing=True, pattern="^.ban(?: |$)(.*)")
-=======
-@register(outgoing=True, pattern="^\.ban(?: |$)(.*)", groups_only=True)
->>>>>>> TelegramUserBot/master
 async def ban(bon):
     """ For .ban command, bans the replied/tagged person """
     # Here laying the sanity check
@@ -273,18 +245,9 @@ async def ban(bon):
     # is done gracefully
     # Shout out the ID, so that fedadmins can fban later
     if reason:
-<<<<<<< HEAD
         await bon.edit(f"`{str(user.id)}` was banned !!\nReason: {reason}")
     else:
         await bon.edit(f"`{str(user.id)}` was banned !!")
-=======
-        await bon.edit(f"{user.first_name} was banned !!\
-        \nID: `{str(user.id)}`\
-        \nReason: {reason}")
-    else:
-        await bon.edit(f"{user.first_name} was banned !!\
-        \nID: `{str(user.id)}`")
->>>>>>> TelegramUserBot/master
     # Announce to the logging group if we have banned the person
     # successfully!
     if BOTLOG:
@@ -294,11 +257,7 @@ async def ban(bon):
             f"CHAT: {bon.chat.title}(`{bon.chat_id}`)")
 
 
-<<<<<<< HEAD
 @register(outgoing=True, pattern="^.unban(?: |$)(.*)")
-=======
-@register(outgoing=True, pattern="^\.unban(?: |$)(.*)", groups_only=True)
->>>>>>> TelegramUserBot/master
 async def nothanos(unbon):
     """ For .unban command, unbans the replied/tagged person """
     # Here laying the sanity check
@@ -335,11 +294,7 @@ async def nothanos(unbon):
         await unbon.edit("`Uh oh my unban logic broke!`")
 
 
-<<<<<<< HEAD
 @register(outgoing=True, pattern="^.mute(?: |$)(.*)")
-=======
-@register(outgoing=True, pattern="^\.mute(?: |$)(.*)", groups_only=True)
->>>>>>> TelegramUserBot/master
 async def spider(spdr):
     """
     This function is basically muting peeps
@@ -399,11 +354,7 @@ async def spider(spdr):
             return await spdr.edit("`Uh oh my mute logic broke!`")
 
 
-<<<<<<< HEAD
 @register(outgoing=True, pattern="^.unmute(?: |$)(.*)")
-=======
-@register(outgoing=True, pattern="^\.unmute(?: |$)(.*)", groups_only=True)
->>>>>>> TelegramUserBot/master
 async def unmoot(unmot):
     """ For .unmute command, unmute the replied/tagged person """
     # Admin or creator check
@@ -451,11 +402,7 @@ async def unmoot(unmot):
                 f"CHAT: {unmot.chat.title}(`{unmot.chat_id}`)")
 
 
-<<<<<<< HEAD
 @register(incoming=True)
-=======
-@register(incoming=True, disable_errors=True)
->>>>>>> TelegramUserBot/master
 async def muter(moot):
     """ Used for deleting the messages of muted people """
     try:
@@ -478,7 +425,6 @@ async def muter(moot):
     if muted:
         for i in muted:
             if str(i.sender) == str(moot.sender_id):
-<<<<<<< HEAD
                 await moot.delete()
                 await moot.client(
                     EditBannedRequest(moot.chat_id, moot.sender_id, rights))
@@ -488,26 +434,6 @@ async def muter(moot):
 
 
 @register(outgoing=True, pattern="^.ungmute(?: |$)(.*)")
-=======
-                try:
-                    await moot.delete()
-                    await moot.client(
-                        EditBannedRequest(moot.chat_id, moot.sender_id,
-                                          rights))
-                except (BadRequestError, UserAdminInvalidError,
-                        ChatAdminRequiredError, UserIdInvalidError):
-                    await moot.client.send_read_acknowledge(
-                        moot.chat_id, moot.id)
-    for i in gmuted:
-        if i.sender == str(moot.sender_id):
-            try:
-                await moot.delete()
-            except BadRequestError:
-                await moot.client.send_read_acknowledge(moot.chat_id, moot.id)
-
-
-@register(outgoing=True, pattern="^\.ungmute(?: |$)(.*)", groups_only=True)
->>>>>>> TelegramUserBot/master
 async def ungmoot(un_gmute):
     """ For .ungmute command, ungmutes the target in the userbot """
     # Admin or creator check
@@ -550,11 +476,7 @@ async def ungmoot(un_gmute):
                 f"CHAT: {un_gmute.chat.title}(`{un_gmute.chat_id}`)")
 
 
-<<<<<<< HEAD
 @register(outgoing=True, pattern="^.gmute(?: |$)(.*)")
-=======
-@register(outgoing=True, pattern="^\.gmute(?: |$)(.*)", groups_only=True)
->>>>>>> TelegramUserBot/master
 async def gspider(gspdr):
     """ For .gmute command, globally mutes the replied/tagged person """
     # Admin or creator check
@@ -598,7 +520,6 @@ async def gspider(gspdr):
                 f"CHAT: {gspdr.chat.title}(`{gspdr.chat_id}`)")
 
 
-<<<<<<< HEAD
 @register(outgoing=True, pattern="^.zombies(?: |$)(.*)", groups_only=False)
 async def rm_deletedacc(show):
     """ For .zombies command, list all the ghost/deleted/zombie accounts in a chat. """
@@ -611,33 +532,12 @@ async def rm_deletedacc(show):
         await show.edit("`Searching for ghost/deleted/zombie accounts...`")
         async for user in show.client.iter_participants(show.chat_id):
 
-=======
-@register(outgoing=True, pattern="^\.delusers(?: |$)(.*)", groups_only=True)
-async def rm_deletedacc(show):
-    """ For .delusers command, list all the ghost/deleted accounts in a chat. """
-    if not show.is_group:
-        await show.edit("`I don't think this is a group.`")
-        return
-    con = show.pattern_match.group(1).lower()
-    del_u = 0
-    del_status = "`No deleted accounts found, Group is cleaned as Hell`"
-
-    if con != "clean":
-        await show.edit("`Searching for zombie accounts...`")
-        async for user in show.client.iter_participants(show.chat_id):
->>>>>>> TelegramUserBot/master
             if user.deleted:
                 del_u += 1
                 await sleep(1)
         if del_u > 0:
-<<<<<<< HEAD
             del_status = f"`Found` **{del_u}** `ghost/deleted/zombie account(s) in this group,\
             \nclean them by using .zombies clean`"
-=======
-            del_status = f"Found **{del_u}** deleted account(s) in this group,\
-            \nclean them by using `.delusers clean`"
-
->>>>>>> TelegramUserBot/master
         await show.edit(del_status)
         return
 
@@ -670,10 +570,7 @@ async def rm_deletedacc(show):
                 EditBannedRequest(show.chat_id, user.id, UNBAN_RIGHTS))
             del_u += 1
 
-<<<<<<< HEAD
 
-=======
->>>>>>> TelegramUserBot/master
     if del_u > 0:
         del_status = f"Cleaned **{del_u}** deleted account(s)"
 
@@ -681,18 +578,12 @@ async def rm_deletedacc(show):
         del_status = f"Cleaned **{del_u}** deleted account(s) \
         \n**{del_a}** deleted admin accounts are not removed"
 
-<<<<<<< HEAD
 
-=======
->>>>>>> TelegramUserBot/master
     await show.edit(del_status)
     await sleep(2)
     await show.delete()
 
-<<<<<<< HEAD
 
-=======
->>>>>>> TelegramUserBot/master
     if BOTLOG:
         await show.client.send_message(
             BOTLOG_CHATID, "#CLEANUP\n"
@@ -700,12 +591,8 @@ async def rm_deletedacc(show):
             \nCHAT: {show.chat.title}(`{show.chat_id}`)")
 
 
-<<<<<<< HEAD
 
 @register(outgoing=True, pattern="^.admins$")
-=======
-@register(outgoing=True, pattern="^\.admins$", groups_only=True)
->>>>>>> TelegramUserBot/master
 async def get_admin(show):
     """ For .admins command, list all of the admins of the chat. """
     info = await show.client.get_entity(show.chat_id)
@@ -722,69 +609,10 @@ async def get_admin(show):
                 mentions += f"\nDeleted Account <code>{user.id}</code>"
     except ChatAdminRequiredError as err:
         mentions += " " + str(err) + "\n"
-<<<<<<< HEAD
     await show.edit(mentions, parse_mode="html")
 
 
 @register(outgoing=True, pattern="^.pin(?: |$)(.*)")
-=======
-    try:
-        await show.edit(mentions, parse_mode="html")
-    except MessageTooLongError:
-        await show.edit(
-            "Damn, too many admins here. Uploading admin list as file.")
-        file = open("adminlist.txt", "w+")
-        file.write(mentions)
-        file.close()
-        await show.client.send_file(
-            show.chat_id,
-            "adminlist.txt",
-            caption='Admins in {}'.format(title),
-            reply_to=show.id,
-        )
-        remove("adminlist.txt")
-
-
-@register(outgoing=True, pattern="^\.bots$", groups_only=True)
-async def get_bots(show):
-    """ For .bots command, list all of the bots of the chat. """
-    info = await show.client.get_entity(show.chat_id)
-    title = info.title if info.title else "this chat"
-    mentions = f'<b>Bots in {title}:</b>\n'
-    try:
-        if isinstance(show.to_id, PeerChat):
-            await show.edit("`I heard that only Supergroups can have bots.`")
-            return
-        else:
-            async for user in show.client.iter_participants(
-                    show.chat_id, filter=ChannelParticipantsBots):
-                if not user.deleted:
-                    link = f"<a href=\"tg://user?id={user.id}\">{user.first_name}</a>"
-                    userid = f"<code>{user.id}</code>"
-                    mentions += f"\n{link} {userid}"
-                else:
-                    mentions += f"\nDeleted Bot <code>{user.id}</code>"
-    except ChatAdminRequiredError as err:
-        mentions += " " + str(err) + "\n"
-    try:
-        await show.edit(mentions, parse_mode="html")
-    except MessageTooLongError:
-        await show.edit(
-            "Damn, too many bots here. Uploading bots list as file.")
-        file = open("botlist.txt", "w+")
-        file.write(mentions)
-        file.close()
-        await show.client.send_file(
-            show.chat_id,
-            "botlist.txt",
-            caption='Bots in {}'.format(title),
-            reply_to=show.id,
-        )
-        remove("botlist.txt")
-
-
-@register(outgoing=True, pattern="^\.pin(?: |$)(.*)", groups_only=True)
->>>>>>> TelegramUserBot/master
 async def pin(msg):
     """ For .pin command, pins the replied/tagged message on the top the chat. """
     # Admin or creator check
@@ -829,11 +657,7 @@ async def pin(msg):
             f"LOUD: {not is_silent}")
 
 
-<<<<<<< HEAD
 @register(outgoing=True, pattern="^.kick(?: |$)(.*)")
-=======
-@register(outgoing=True, pattern="^\.kick(?: |$)(.*)", groups_only=True)
->>>>>>> TelegramUserBot/master
 async def kick(usr):
     """ For .kick command, kicks the replied/tagged person from the group. """
     # Admin or creator check
@@ -857,11 +681,7 @@ async def kick(usr):
         await usr.client.kick_participant(usr.chat_id, user.id)
         await sleep(.5)
     except Exception as e:
-<<<<<<< HEAD
         await usr.edit(NO_PERM + f"\n{str(e)}")
-=======
-        await usr.edit(NO_PERM)
->>>>>>> TelegramUserBot/master
         return
 
     if reason:
@@ -879,11 +699,7 @@ async def kick(usr):
             f"CHAT: {usr.chat.title}(`{usr.chat_id}`)\n")
 
 
-<<<<<<< HEAD
 @register(outgoing=True, pattern="^.users ?(.*)")
-=======
-@register(outgoing=True, pattern="^\.users ?(.*)", groups_only=True)
->>>>>>> TelegramUserBot/master
 async def get_users(show):
     """ For .users command, list all of the users in a chat. """
     info = await show.client.get_entity(show.chat_id)
@@ -925,21 +741,13 @@ async def get_users(show):
 
 async def get_user_from_event(event):
     """ Get the user from argument or replied message. """
-<<<<<<< HEAD
     args = event.pattern_match.group(1).split(' ', 1)
-=======
-    args = event.pattern_match.group(1).split(':', 1)
->>>>>>> TelegramUserBot/master
     extra = None
     if event.reply_to_msg_id and not len(args) == 2:
         previous_message = await event.get_reply_message()
         user_obj = await event.client.get_entity(previous_message.from_id)
         extra = event.pattern_match.group(1)
-<<<<<<< HEAD
     elif args:
-=======
-    elif len(args[0]) > 0:
->>>>>>> TelegramUserBot/master
         user = args[0]
         if len(args) == 2:
             extra = args[1]
@@ -980,7 +788,6 @@ async def get_user_from_id(user, event):
 
     return user_obj
 
-<<<<<<< HEAD
   
 @register(outgoing=True, pattern="^.usersdel ?(.*)")
 async def get_usersdel(show):
@@ -1130,41 +937,12 @@ CMD_HELP.update({
 \nUsage: Reply someone's message with .ungmute to remove them from the gmuted list.\
 \n\n.zombies\
 \nUsage: Searches for deleted accounts in a group. Use .zombies clean to remove deleted accounts from the group.\
-=======
-
-CMD_HELP.update({
-    "admin":
-    ".promote <username/userid> : <custom rank (optional)> (or) reply to a message with .promote <rank (optional)>\
-\nUsage: Provides admin rights to the person in the chat.\
-\n\n.demote <username/userid> (or) reply to a message with .demote\
-\nUsage: Revokes the person's admin permissions in the chat.\
-\n\n.ban <username/userid> : <reason (optional)> (or) reply to a message with .ban <reason (optional)>\
-\nUsage: Bans the person off your chat.\
-\n\n.unban <username/userid> (or) reply to a message with .unban\
-\nUsage: Removes the ban from the person in the chat.\
-\n\n.mute <username/userid> : <reason (optional)> reply to a message with .mute <reason (optional)>\
-\nUsage: Mutes the person in the chat, works on admins too.\
-\n\n.unmute <username/userid> (or) reply to a message with .unmute\
-\nUsage: Removes the person from the muted list.\
-\n\n.gmute <username/userid> : <reason (optional)> (or) reply to a message with .gmute <reason (optional)>\
-\nUsage: Mutes the person in all groups you have in common with them.\
-\n\n.ungmute <username/userid> (or) reply to a message with .ungmute\
-\nUsage: Removes the person from the global mute list.\
-\n\n.delusers\
-\nUsage: Searches for deleted accounts in a group. Use .delusers clean to remove deleted accounts from the group.\
->>>>>>> TelegramUserBot/master
 \n\n.admins\
 \nUsage: Retrieves a list of admins in the chat.\
 \n\n.bots\
 \nUsage: Retrieves a list of bots in the chat.\
-<<<<<<< HEAD
 \n\n.users or .users <name of member>\
 \nUsage: Retrieves all (or queried) users in the chat.\
 \n\n.setgppic <reply to image>\
-=======
-\n\n.users or .users <search query>\
-\nUsage: Retrieves all (or queried) users in the chat.\
-\n\n.setgpic <reply to image>\
->>>>>>> TelegramUserBot/master
 \nUsage: Changes the group's display picture."
 })

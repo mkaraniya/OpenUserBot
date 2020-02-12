@@ -22,11 +22,8 @@ def register(**args):
     """ Register a new event. """
     pattern = args.get('pattern', None)
     disable_edited = args.get('disable_edited', False)
-<<<<<<< HEAD
     ignore_unsafe = args.get('ignore_unsafe', False)
     unsafe_pattern = r'^[^/!#@\$A-Za-z]'
-=======
->>>>>>> TelegramUserBot/master
     groups_only = args.get('groups_only', False)
     trigger_on_fwd = args.get('trigger_on_fwd', False)
     disable_errors = args.get('disable_errors', False)
@@ -37,12 +34,9 @@ def register(**args):
     if "disable_edited" in args:
         del args['disable_edited']
 
-<<<<<<< HEAD
     if "ignore_unsafe" in args:
         del args['ignore_unsafe']
 
-=======
->>>>>>> TelegramUserBot/master
     if "groups_only" in args:
         del args['groups_only']
 
@@ -52,13 +46,10 @@ def register(**args):
     if "trigger_on_fwd" in args:
         del args['trigger_on_fwd']
 
-<<<<<<< HEAD
     if pattern:
         if not ignore_unsafe:
             args['pattern'] = pattern.replace('^.', unsafe_pattern, 1)
 
-=======
->>>>>>> TelegramUserBot/master
     def decorator(func):
         async def wrapper(check):
             if not LOGSPAMMER:
@@ -95,12 +86,9 @@ def register(**args):
                     date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
 
                     text = "**USERBOT ERROR REPORT**\n"
-<<<<<<< HEAD
                     link = "[OUB Support Chat](https://t.me/PPE_Support)"
                     text += "If you want to, you can report it"
                     text += f"- just forward this message to {link}.\n"
-=======
->>>>>>> TelegramUserBot/master
                     text += "Nothing is logged except the fact of error and date\n"
 
                     ftext = "========== DISCLAIMER =========="
@@ -140,16 +128,10 @@ def register(**args):
                     file.close()
 
                     if LOGSPAMMER:
-<<<<<<< HEAD
                         await check.client.respond(
                             "`Sorry, my userbot has crashed.\
                         \nThe error logs are stored in the userbot's log chat.`"
                         )
-=======
-                        await check.respond("`Sorry, my userbot has crashed.\
-                        \nThe error logs are stored in the userbot's log chat.`"
-                                            )
->>>>>>> TelegramUserBot/master
 
                     await check.client.send_file(send_to,
                                                  "error.log",

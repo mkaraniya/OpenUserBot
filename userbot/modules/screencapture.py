@@ -16,11 +16,7 @@ from userbot.events import register
 from userbot import GOOGLE_CHROME_BIN, CHROME_DRIVER, CMD_HELP
 
 
-<<<<<<< HEAD
 @register(pattern=r".ss (.*)", outgoing=True)
-=======
-@register(pattern=r"^\.ss (.*)", outgoing=True)
->>>>>>> TelegramUserBot/master
 async def capture(url):
     """ For .ss command, capture a website's screenshot and send the photo. """
     await url.edit("`Processing ...`")

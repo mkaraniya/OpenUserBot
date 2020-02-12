@@ -1,22 +1,15 @@
 aiohttp
 aria2p
 async_generator
-<<<<<<< HEAD
 bs4
 cowpy
 # cryptg
 cffi>=1.0.0
-=======
-asyncurban
-bs4
-cowpy
->>>>>>> TelegramUserBot/master
 dnspython
 emoji
 gitpython
 google-api-python-client
 google-auth-oauthlib
-<<<<<<< HEAD
 googletrans>=2.4.0
 google_images_download>=2.7.1
 gTTS>=2.0.1
@@ -25,15 +18,6 @@ hachoir
 heroku
 heroku3
 httplib2==0.15.0
-=======
-google_images_download>=2.7.1
-googletrans>=2.4.0
-gTTS>=2.0.1
-gTTS-token>=1.1.3
-hachoir
-heroku3
-httplib2
->>>>>>> TelegramUserBot/master
 humanize
 lxml
 oauth2client
@@ -45,27 +29,15 @@ pylast
 pySmartDL
 python-barcode
 python-dotenv
-<<<<<<< HEAD
 youtube-dl
-=======
->>>>>>> TelegramUserBot/master
 pytz
 qrcode
 requests>=2.18.4
 search-engine-parser>=0.4.2
 speedtest-cli>=2.0.2
 sqlalchemy>=1.2
-<<<<<<< HEAD
 telethon>=1.10.6
 telethon-session-sqlalchemy>=0.2.6
 urbandict>=0.5
 wikipedia>=1.4.0
 coffeehouse
-=======
-telethon>=1.10.9
-telethon-session-sqlalchemy>=0.2.6
-tgcrypto
-wikipedia>=1.4.0
-youtube-dl
-
->>>>>>> TelegramUserBot/master

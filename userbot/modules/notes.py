@@ -10,11 +10,7 @@ from userbot.events import register
 from asyncio import sleep
 
 
-<<<<<<< HEAD
 @register(outgoing=True, pattern="^.notes$")
-=======
-@register(outgoing=True, pattern="^\.notes$")
->>>>>>> TelegramUserBot/master
 async def notes_active(svd):
     """ For .notes command, list all of the notes saved in a chat. """
     try:
@@ -33,11 +29,7 @@ async def notes_active(svd):
     await svd.edit(message)
 
 
-<<<<<<< HEAD
 @register(outgoing=True, pattern=r"^.clear (\w*)")
-=======
-@register(outgoing=True, pattern=r"^\.clear (\w*)")
->>>>>>> TelegramUserBot/master
 async def remove_notes(clr):
     """ For .clear command, clear note with the given name."""
     try:
@@ -53,11 +45,7 @@ async def remove_notes(clr):
             "`Successfully deleted note:` **{}**".format(notename))
 
 
-<<<<<<< HEAD
 @register(outgoing=True, pattern=r"^.save (\w*)")
-=======
-@register(outgoing=True, pattern=r"^\.save (\w*)")
->>>>>>> TelegramUserBot/master
 async def add_note(fltr):
     """ For .save command, saves notes in a chat. """
     try:
@@ -97,14 +85,10 @@ async def add_note(fltr):
         return await fltr.edit(success.format('added', keyword))
 
 
-<<<<<<< HEAD
 @register(pattern=r"#\w*",
           disable_edited=True,
           disable_errors=True,
           ignore_unsafe=True)
-=======
-@register(pattern=r"#\w*", disable_edited=True, disable_errors=True)
->>>>>>> TelegramUserBot/master
 async def incom_note(getnt):
     """ Notes logic. """
     try:
@@ -122,35 +106,19 @@ async def incom_note(getnt):
                 msg_o = await getnt.client.get_messages(entity=BOTLOG_CHATID,
                                                         ids=int(
                                                             note.f_mesg_id))
-<<<<<<< HEAD
-=======
-                await getnt.delete()
->>>>>>> TelegramUserBot/master
                 await getnt.client.send_message(getnt.chat_id,
                                                 msg_o.mesage,
                                                 reply_to=message_id_to_reply,
                                                 file=msg_o.media)
             elif note and note.reply:
-<<<<<<< HEAD
                 await getnt.client.send_message(getnt.chat_id,
                                                 note.reply,
                                                 reply_to=message_id_to_reply)
-=======
-                await getnt.delete()
-                await getnt.client.send_message(getnt.chat_id,
-                                                note.reply,
-                                                reply_to=message_id_to_reply)
-
->>>>>>> TelegramUserBot/master
     except AttributeError:
         pass
 
 
-<<<<<<< HEAD
 @register(outgoing=True, pattern="^.rmbotnotes (.*)")
-=======
-@register(outgoing=True, pattern="^\.rmbotnotes (.*)")
->>>>>>> TelegramUserBot/master
 async def kick_marie_notes(kick):
     """ For .rmbotnotes command, allows you to kick all \
         Marie(or her clones) notes from a chat. """

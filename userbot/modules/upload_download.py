@@ -36,13 +36,8 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
         time_to_completion = round((total - current) / speed) * 1000
         estimated_total_time = elapsed_time + time_to_completion
         progress_str = "[{0}{1}] {2}%\n".format(
-<<<<<<< HEAD
             ''.join(["▰" for i in range(math.floor(percentage / 10))]),
             ''.join(["▱" for i in range(10 - math.floor(percentage / 10))]),
-=======
-            ''.join(["█" for i in range(math.floor(percentage / 10))]),
-            ''.join(["░" for i in range(10 - math.floor(percentage / 10))]),
->>>>>>> TelegramUserBot/master
             round(percentage, 2))
         tmp = progress_str + \
             "{0} of {1}\nETA: {2}".format(
@@ -88,11 +83,7 @@ def time_formatter(milliseconds: int) -> str:
     return tmp[:-2]
 
 
-<<<<<<< HEAD
 @register(pattern=r".download(?: |$)(.*)", outgoing=True)
-=======
-@register(pattern=r"^\.download(?: |$)(.*)", outgoing=True)
->>>>>>> TelegramUserBot/master
 async def download(target_file):
     """ For .download command, download files to the userbot's server. """
     await target_file.edit("Processing ...")
@@ -124,13 +115,8 @@ async def download(target_file):
             speed = downloader.get_speed()
             elapsed_time = round(diff) * 1000
             progress_str = "[{0}{1}] {2}%".format(
-<<<<<<< HEAD
                 ''.join(["▰" for i in range(math.floor(percentage / 10))]),
                 ''.join(["▱"
-=======
-                ''.join(["█" for i in range(math.floor(percentage / 10))]),
-                ''.join(["░"
->>>>>>> TelegramUserBot/master
                          for i in range(10 - math.floor(percentage / 10))]),
                 round(percentage, 2))
             estimated_total_time = downloader.get_eta(human=True)
@@ -172,11 +158,7 @@ async def download(target_file):
             "Reply to a message to download to my local server.")
 
 
-<<<<<<< HEAD
 @register(pattern=r".uploadir (.*)", outgoing=True)
-=======
-@register(pattern=r"^\.uploadir (.*)", outgoing=True)
->>>>>>> TelegramUserBot/master
 async def uploadir(udir_event):
     """ For .uploadir command, allows you to upload everything from a folder in the server"""
     input_str = udir_event.pattern_match.group(1)
@@ -252,11 +234,7 @@ async def uploadir(udir_event):
         await udir_event.edit("404: Directory Not Found")
 
 
-<<<<<<< HEAD
 @register(pattern=r".upload (.*)", outgoing=True)
-=======
-@register(pattern=r"^\.upload (.*)", outgoing=True)
->>>>>>> TelegramUserBot/master
 async def upload(u_event):
     """ For .upload command, allows you to upload a file from the userbot's server """
     await u_event.edit("Processing ...")
@@ -332,11 +310,7 @@ def extract_w_h(file):
         return width, height
 
 
-<<<<<<< HEAD
 @register(pattern=r".uploadas(stream|vn|all) (.*)", outgoing=True)
-=======
-@register(pattern=r"^\.uploadas(stream|vn|all) (.*)", outgoing=True)
->>>>>>> TelegramUserBot/master
 async def uploadas(uas_event):
     """ For .uploadas command, allows you to specify some arguments for upload. """
     await uas_event.edit("Processing ...")

@@ -14,11 +14,7 @@ from userbot import CMD_HELP
 from userbot.events import register
 
 
-<<<<<<< HEAD
 @register(outgoing=True, pattern="^.speed$")
-=======
-@register(outgoing=True, pattern="^\.speed$")
->>>>>>> TelegramUserBot/master
 async def speedtst(spd):
     """ For .speed command, use SpeedTest to check server speeds. """
     await spd.edit("`Running speed test . . .`")
@@ -57,11 +53,7 @@ def speed_convert(size):
     return f"{round(size, 2)} {units[zero]}"
 
 
-<<<<<<< HEAD
 @register(outgoing=True, pattern="^.dc$")
-=======
-@register(outgoing=True, pattern="^\.dc$")
->>>>>>> TelegramUserBot/master
 async def neardc(event):
     """ For .dc command, get the nearest datacenter information. """
     result = await event.client(functions.help.GetNearestDcRequest())
@@ -70,11 +62,7 @@ async def neardc(event):
                      f"This Datacenter : `{result.this_dc}`")
 
 
-<<<<<<< HEAD
 @register(outgoing=True, pattern="^.ping$")
-=======
-@register(outgoing=True, pattern="^\.ping$")
->>>>>>> TelegramUserBot/master
 async def pingme(pong):
     """ For .ping command, ping the userbot from any chat.  """
     start = datetime.now()

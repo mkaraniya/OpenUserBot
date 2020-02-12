@@ -10,11 +10,7 @@ from userbot import CMD_HELP
 from userbot.events import register
 
 
-<<<<<<< HEAD
 @register(outgoing=True, pattern=r"^.lock ?(.*)")
-=======
-@register(outgoing=True, pattern=r"^\.lock ?(.*)")
->>>>>>> TelegramUserBot/master
 async def locks(event):
     input_str = event.pattern_match.group(1).lower()
     peer_id = event.chat_id
