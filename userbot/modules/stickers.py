@@ -18,23 +18,49 @@ from telethon.tl.functions.messages import GetStickerSetRequest
 from telethon.tl.types import InputStickerSetID
 from telethon.tl.types import DocumentAttributeSticker
 
+<<<<<<< HEAD
+=======
+PACK_FULL = "Whoa! That's probably enough stickers for one pack, give it a break. \
+A pack can't have more than 120 stickers at the moment."
+
+>>>>>>> TelegramUserBot/master
 KANGING_STR = [
     "Using Witchery to kang this sticker...",
     "Plagiarising hehe...",
     "Inviting this sticker over to my pack...",
     "Kanging this sticker...",
+<<<<<<< HEAD
     "Hey that's a nice sticker!\nMind if I kang?!..",
     "hehe me stel ur stikér\nhehe.",
     "Ay look over there (☉｡☉)!→\nWhile I kang this...",
     "Roses are red violets are blue, kanging this sticker so my pacc looks cool",
+=======
+    "Hey that's a nice sticker!\
+    \nMind if I kang?!..",
+    "hehe me stel ur stikér\
+    \nhehe.",
+    "Ay look over there (☉｡☉)!→\
+    \nWhile I kang this...",
+    "Roses are red \
+    \nviolets are blue, \
+    \nkanging this sticker \
+    \nso my pacc looks cool",
+>>>>>>> TelegramUserBot/master
     "Imprisoning this sticker...",
     "Mr.Steal Your Sticker is stealing this sticker... ",
 ]
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.kang")
 async def kang(args):
     """ For .kang command, kangs stickers or creates new ones. """
+=======
+@register(outgoing=True, pattern="^\.kang")
+async def kang(args):
+    """ For .kang command, kangs stickers or creates new ones. """
+    kang_meme = random.choice(KANGING_STR)
+>>>>>>> TelegramUserBot/master
     user = await bot.get_me()
     if not user.username:
         user.username = user.first_name
@@ -46,11 +72,19 @@ async def kang(args):
 
     if message and message.media:
         if isinstance(message.media, MessageMediaPhoto):
+<<<<<<< HEAD
             await args.edit(f"`{random.choice(KANGING_STR)}`")
             photo = io.BytesIO()
             photo = await bot.download_media(message.photo, photo)
         elif "image" in message.media.document.mime_type.split('/'):
             await args.edit(f"`{random.choice(KANGING_STR)}`")
+=======
+            await args.edit(f"`{kang_meme}`")
+            photo = io.BytesIO()
+            photo = await bot.download_media(message.photo, photo)
+        elif "image" in message.media.document.mime_type.split('/'):
+            await args.edit(f"`{kang_meme}`")
+>>>>>>> TelegramUserBot/master
             photo = io.BytesIO()
             await bot.download_file(message.media.document, photo)
             if (DocumentAttributeFilename(file_name='sticker.webp') in
@@ -58,7 +92,11 @@ async def kang(args):
                 emoji = message.media.document.attributes[1].alt
                 emojibypass = True
         elif "tgsticker" in message.media.document.mime_type:
+<<<<<<< HEAD
             await args.edit(f"`{random.choice(KANGING_STR)}`")
+=======
+            await args.edit(f"`{kang_meme}`")
+>>>>>>> TelegramUserBot/master
             await bot.download_file(message.media.document,
                                     'AnimatedSticker.tgs')
 
@@ -121,12 +159,21 @@ async def kang(args):
                 await bot.send_read_acknowledge(conv.chat_id)
                 await conv.send_message(packname)
                 x = await conv.get_response()
+<<<<<<< HEAD
                 while "120" in x.text:
                     pack += 1
                     packname = f"a{user.id}_by_{user.username}_{pack}"
                     packnick = f"@{user.username}'s kang pack Vol.{pack}"
                     await args.edit("`Switching to Pack " + str(pack) +
                                     " due to insufficient space`")
+=======
+                while x.text == PACK_FULL:
+                    pack += 1
+                    packname = f"a{user.id}_by_{user.username}_{pack}"
+                    packnick = f"@{user.username}'s kang pack Vol.{pack}"
+                    await args.edit(f"`{kang_meme}\
+                    \nMoving on to Vol.{str(pack)}..`")
+>>>>>>> TelegramUserBot/master
                     await conv.send_message(packname)
                     x = await conv.get_response()
                     if x.text == "Invalid pack selected.":
@@ -166,9 +213,14 @@ async def kang(args):
                         await conv.get_response()
                         # Ensure user doesn't get spamming notifications
                         await bot.send_read_acknowledge(conv.chat_id)
+<<<<<<< HEAD
                         await args.edit(f"`Sticker added in a Different Pack !\
                             \nThis Pack is Newly created!\
                             \nYour pack can be found [here](t.me/addstickers/{packname})",
+=======
+                        await args.edit(f"`Haha, yes. New kang pack unlocked!\
+                            \nPack can be found [here](t.me/addstickers/{packname})",
+>>>>>>> TelegramUserBot/master
                                         parse_mode='md')
                         return
                 if is_anim:
@@ -266,7 +318,11 @@ async def resize_photo(photo):
     return image
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.stkrinfo$")
+=======
+@register(outgoing=True, pattern="^\.stkrinfo$")
+>>>>>>> TelegramUserBot/master
 async def get_pack_info(event):
     if not event.is_reply:
         await event.edit("`I can't fetch info from nothing, can I ?!`")

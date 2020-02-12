@@ -33,8 +33,13 @@ else:
                 level=INFO)
 LOGS = getLogger(__name__)
 
+<<<<<<< HEAD
 if version_info[0] < 3 or version_info[1] < 8:
     LOGS.info("You MUST have a python version of at least 3.8."
+=======
+if version_info[0] < 3 or version_info[1] < 6:
+    LOGS.info("You MUST have a python version of at least 3.6."
+>>>>>>> TelegramUserBot/master
               "Multiple features depend on this. Bot quitting.")
     quit(1)
 
@@ -53,7 +58,10 @@ if CONFIG_CHECK:
 API_KEY = os.environ.get("API_KEY", None)
 API_HASH = os.environ.get("API_HASH", None)
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> TelegramUserBot/master
 # Userbot Session String
 STRING_SESSION = os.environ.get("STRING_SESSION", None)
 
@@ -68,14 +76,21 @@ LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "False"))
 PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False"))
 
 # Heroku Credentials for updater.
+<<<<<<< HEAD
 HEROKU_MEMEZ = sb(os.environ.get("HEROKU_MEMEZ", "False"))
+=======
+>>>>>>> TelegramUserBot/master
 HEROKU_APPNAME = os.environ.get("HEROKU_APPNAME", None)
 HEROKU_APIKEY = os.environ.get("HEROKU_APIKEY", None)
 
 # Custom (forked) repo URL for updater.
 UPSTREAM_REPO_URL = os.environ.get(
     "UPSTREAM_REPO_URL",
+<<<<<<< HEAD
     "https://github.com/mkaraniya/OpenUserBot.git")
+=======
+    "https://github.com/selbotbar/TelegramUserBot.git")
+>>>>>>> TelegramUserBot/master
 
 # Console verbose logging
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
@@ -97,9 +112,12 @@ GOOGLE_CHROME_BIN = os.environ.get("GOOGLE_CHROME_BIN", None)
 OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID", None)
 WEATHER_DEFCITY = os.environ.get("WEATHER_DEFCITY", None)
 
+<<<<<<< HEAD
 # Lydia API
 LYDIA_API_KEY = os.environ.get("LYDIA_API_KEY", None)
 
+=======
+>>>>>>> TelegramUserBot/master
 # Anti Spambot Config
 ANTI_SPAMBOT = sb(os.environ.get("ANTI_SPAMBOT", "False"))
 ANTI_SPAMBOT_SHOUT = sb(os.environ.get("ANTI_SPAMBOT_SHOUT", "False"))
@@ -162,12 +180,34 @@ for binary, path in binaries.items():
 # 'bot' variable
 if STRING_SESSION:
     # pylint: disable=invalid-name
+<<<<<<< HEAD
     bot = TelegramClient(StringSession(STRING_SESSION), API_KEY, API_HASH)
 else:
     # pylint: disable=invalid-name
     bot = TelegramClient("userbot", API_KEY, API_HASH)
 
 
+=======
+    bot = TelegramClient(StringSession(STRING_SESSION),
+                         API_KEY,
+                         API_HASH,
+                         connection_retries=None,
+                         auto_reconnect=False,
+                         lang_code='en')
+else:
+    # pylint: disable=invalid-name
+    bot = TelegramClient("userbot",
+                         API_KEY,
+                         API_HASH,
+                         connection_retries=None,
+                         auto_reconnect=False,
+                         lang_code='en')
+
+
+
+
+    
+>>>>>>> TelegramUserBot/master
 async def check_botlog_chatid():
     if not BOTLOG_CHATID and LOGSPAMMER:
         LOGS.info(
@@ -185,11 +225,20 @@ async def check_botlog_chatid():
         return
 
     entity = await bot.get_entity(BOTLOG_CHATID)
+<<<<<<< HEAD
     if entity.default_banned_rights.send_messages:
         LOGS.info(
             "Your account doesn't have rights to send messages to BOTLOG_CHATID "
             "group. Check if you typed the Chat ID correctly.")
         quit(1)
+=======
+    if not entity.creator:
+        if entity.default_banned_rights.send_messages:
+            LOGS.info(
+                "Your account doesn't have rights to send messages to BOTLOG_CHATID "
+                "group. Check if you typed the Chat ID correctly.")
+            quit(1)
+>>>>>>> TelegramUserBot/master
 
 
 with bot:

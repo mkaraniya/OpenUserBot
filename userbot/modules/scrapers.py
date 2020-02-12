@@ -21,7 +21,11 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.options import Options
 from wikipedia import summary
 from wikipedia.exceptions import DisambiguationError, PageError
+<<<<<<< HEAD
 from urbandict import define
+=======
+import asyncurban
+>>>>>>> TelegramUserBot/master
 from requests import get
 from search_engine_parser import GoogleSearch
 from google_images_download import google_images_download
@@ -43,18 +47,30 @@ from telethon.tl.types import DocumentAttributeAudio
 from userbot.modules.upload_download import progress, humanbytes, time_formatter
 
 CARBONLANG = "auto"
+<<<<<<< HEAD
 TTS_LANG = "en"
 TRT_LANG = "en"
 
 
 @register(outgoing=True, pattern="^.crblang (.*)")
+=======
+TTS_LANG = "pl"
+TRT_LANG = "pl"
+
+
+@register(outgoing=True, pattern="^\.crblang (.*)")
+>>>>>>> TelegramUserBot/master
 async def setlang(prog):
     global CARBONLANG
     CARBONLANG = prog.pattern_match.group(1)
     await prog.edit(f"Language for carbon.now.sh set to {CARBONLANG}")
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.carbon")
+=======
+@register(outgoing=True, pattern="^\.carbon")
+>>>>>>> TelegramUserBot/master
 async def carbon_api(e):
     """ A Wrapper for carbon.now.sh """
     await e.edit("`Processing..`")
@@ -120,7 +136,11 @@ async def carbon_api(e):
     await e.delete()  # Deleting msg
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.img (.*)")
+=======
+@register(outgoing=True, pattern="^\.img (.*)")
+>>>>>>> TelegramUserBot/master
 async def img_sampler(event):
     """ For .img command, search and return images matching the query. """
     await event.edit("Processing...")
@@ -151,7 +171,11 @@ async def img_sampler(event):
     await event.delete()
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.currency (.*)")
+=======
+@register(outgoing=True, pattern="^\.currency (.*)")
+>>>>>>> TelegramUserBot/master
 async def moni(event):
     input_str = event.pattern_match.group(1)
     input_sgra = input_str.split(" ")
@@ -179,7 +203,11 @@ async def moni(event):
         return
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern=r"^.google (.*)")
+=======
+@register(outgoing=True, pattern=r"^\.google (.*)")
+>>>>>>> TelegramUserBot/master
 async def gsearch(q_event):
     """ For .google command, do a Google search. """
     match = q_event.pattern_match.group(1)
@@ -194,7 +222,11 @@ async def gsearch(q_event):
     gsearch = GoogleSearch()
     gresults = await gsearch.async_search(*search_args)
     msg = ""
+<<<<<<< HEAD
     for i in range(10):
+=======
+    for i in range(len(gresults["links"])):
+>>>>>>> TelegramUserBot/master
         try:
             title = gresults["titles"][i]
             link = gresults["links"][i]
@@ -213,7 +245,11 @@ async def gsearch(q_event):
         )
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern=r"^.wiki (.*)")
+=======
+@register(outgoing=True, pattern=r"^\.wiki (.*)")
+>>>>>>> TelegramUserBot/master
 async def wiki(wiki_q):
     """ For .wiki command, fetch content from Wikipedia. """
     match = wiki_q.pattern_match.group(1)
@@ -245,11 +281,16 @@ async def wiki(wiki_q):
             BOTLOG_CHATID, f"Wiki query `{match}` was executed successfully")
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.ud (.*)")
+=======
+@register(outgoing=True, pattern="^\.ud (.*)")
+>>>>>>> TelegramUserBot/master
 async def urban_dict(ud_e):
     """ For .ud command, fetch content from Urban Dictionary. """
     await ud_e.edit("Processing...")
     query = ud_e.pattern_match.group(1)
+<<<<<<< HEAD
     try:
         define(query)
     except HTTPError:
@@ -258,13 +299,29 @@ async def urban_dict(ud_e):
     mean = define(query)
     deflen = sum(len(i) for i in mean[0]["def"])
     exalen = sum(len(i) for i in mean[0]["example"])
+=======
+    urban_dict_helper = asyncurban.UrbanDictionary()
+    try:
+        urban_def = await urban_dict_helper.get_word(query)
+    except asyncurban.WordNotFoundError:
+        await ud_e.edit(f"Sorry, couldn't find any results for: {query}")
+        return
+    deflen = sum(len(i) for i in urban_def.definition)
+    exalen = sum(len(i) for i in urban_def.example)
+>>>>>>> TelegramUserBot/master
     meanlen = deflen + exalen
     if int(meanlen) >= 0:
         if int(meanlen) >= 4096:
             await ud_e.edit("`Output too large, sending as file.`")
             file = open("output.txt", "w+")
+<<<<<<< HEAD
             file.write("Text: " + query + "\n\nMeaning: " + mean[0]["def"] +
                        "\n\n" + "Example: \n" + mean[0]["example"])
+=======
+            file.write("Text: " + query + "\n\nMeaning: " +
+                       urban_def.definition + "\n\n" + "Example: \n" +
+                       urban_def.example)
+>>>>>>> TelegramUserBot/master
             file.close()
             await ud_e.client.send_file(
                 ud_e.chat_id,
@@ -275,17 +332,30 @@ async def urban_dict(ud_e):
             await ud_e.delete()
             return
         await ud_e.edit("Text: **" + query + "**\n\nMeaning: **" +
+<<<<<<< HEAD
                         mean[0]["def"] + "**\n\n" + "Example: \n__" +
                         mean[0]["example"] + "__")
         if BOTLOG:
             await ud_e.client.send_message(
                 BOTLOG_CHATID,
                 "ud query `" + query + "` executed successfully.")
+=======
+                        urban_def.definition + "**\n\n" + "Example: \n__" +
+                        urban_def.example + "__")
+        if BOTLOG:
+            await ud_e.client.send_message(
+                BOTLOG_CHATID, "UrbanDictionary query for `" + query +
+                "` executed successfully.")
+>>>>>>> TelegramUserBot/master
     else:
         await ud_e.edit("No result found for **" + query + "**")
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern=r"^.tts(?: |$)([\s\S]*)")
+=======
+@register(outgoing=True, pattern=r"^\.tts(?: |$)([\s\S]*)")
+>>>>>>> TelegramUserBot/master
 async def text_to_speech(query):
     """ For .tts command, a wrapper for Google Text-to-Speech. """
     textx = await query.get_reply_message()
@@ -331,7 +401,11 @@ async def text_to_speech(query):
 
 
 # kanged from Blank-x ;---;
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.imdb (.*)")
+=======
+@register(outgoing=True, pattern="^\.imdb (.*)")
+>>>>>>> TelegramUserBot/master
 async def imdb(e):
     try:
         movie_name = e.pattern_match.group(1)
@@ -414,7 +488,11 @@ async def imdb(e):
         await e.edit("Plox enter **Valid movie name** kthx")
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern=r"^.trt(?: |$)([\s\S]*)")
+=======
+@register(outgoing=True, pattern=r"^\.trt(?: |$)([\s\S]*)")
+>>>>>>> TelegramUserBot/master
 async def translateme(trans):
     """ For .trt command, translate the given text using Google Translate. """
     translator = Translator()
@@ -446,7 +524,11 @@ async def translateme(trans):
         )
 
 
+<<<<<<< HEAD
 @register(pattern=".lang (trt|tts) (.*)", outgoing=True)
+=======
+@register(pattern="^\.lang (trt|tts) (.*)", outgoing=True)
+>>>>>>> TelegramUserBot/master
 async def lang(value):
     """ For .lang command, change the default langauge of userbot scrapers. """
     util = value.pattern_match.group(1).lower()
@@ -481,7 +563,11 @@ async def lang(value):
             f"`Language for {scraper} changed to {LANG.title()}.`")
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.yt (.*)")
+=======
+@register(outgoing=True, pattern="^\.yt (.*)")
+>>>>>>> TelegramUserBot/master
 async def yt_search(video_q):
     """ For .yt command, do a YouTube search from Telegram. """
     query = video_q.pattern_match.group(1)
@@ -544,7 +630,11 @@ async def youtube_search(query,
         return (nexttok, videos)
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern=r".rip(audio|video) (.*)")
+=======
+@register(outgoing=True, pattern=r"^\.rip(audio|video) (.*)")
+>>>>>>> TelegramUserBot/master
 async def download_video(v_url):
     """ For .rip command, download media from YouTube and many other sites. """
     url = v_url.pattern_match.group(2)
@@ -612,13 +702,18 @@ async def download_video(v_url):
         video = True
 
     try:
+<<<<<<< HEAD
         await v_url.edit("`Fetching data, please wait..`")
+=======
+        await v_url.edit("`Pobieram, zaczekaj..`")
+>>>>>>> TelegramUserBot/master
         with YoutubeDL(opts) as rip:
             rip_data = rip.extract_info(url)
     except DownloadError as DE:
         await v_url.edit(f"`{str(DE)}`")
         return
     except ContentTooShortError:
+<<<<<<< HEAD
         await v_url.edit("`The download content was too short.`")
         return
     except GeoRestrictedError:
@@ -634,21 +729,48 @@ async def download_video(v_url):
         return
     except UnavailableVideoError:
         await v_url.edit("`Media is not available in the requested format.`")
+=======
+        await v_url.edit("`Dane były zbyt małe.`")
+        return
+    except GeoRestrictedError:
+        await v_url.edit(
+            "`Wideo ma Geoblokadę.`"
+        )
+        return
+    except MaxDownloadsReached:
+        await v_url.edit("`Maksymalny limit pobrań osiągnięty.`")
+        return
+    except PostProcessingError:
+        await v_url.edit("`Wystąpił błąd podczas przetwarzania.`")
+        return
+    except UnavailableVideoError:
+        await v_url.edit("`Brak mediów w podanym formacie.`")
+>>>>>>> TelegramUserBot/master
         return
     except XAttrMetadataError as XAME:
         await v_url.edit(f"`{XAME.code}: {XAME.msg}\n{XAME.reason}`")
         return
     except ExtractorError:
+<<<<<<< HEAD
         await v_url.edit("`There was an error during info extraction.`")
+=======
+        await v_url.edit("`Wystąpił błąd podczas ekstrackcji metadanych.`")
+>>>>>>> TelegramUserBot/master
         return
     except Exception as e:
         await v_url.edit(f"{str(type(e)): {str(e)}}")
         return
     c_time = time.time()
     if song:
+<<<<<<< HEAD
         await v_url.edit(f"`Preparing to upload song:`\
         \n**{rip_data['title']}**\
         \nby *{rip_data['uploader']}*")
+=======
+        await v_url.edit(f"`Przygotowywanie do wysłania piosenki:`\
+        \n**{rip_data['title']}**\
+        \nby __{rip_data['uploader']}__")
+>>>>>>> TelegramUserBot/master
         await v_url.client.send_file(
             v_url.chat_id,
             f"{rip_data['id']}.mp3",
@@ -660,14 +782,24 @@ async def download_video(v_url):
             ],
             progress_callback=lambda d, t: asyncio.get_event_loop(
             ).create_task(
+<<<<<<< HEAD
                 progress(d, t, v_url, c_time, "Uploading..",
+=======
+                progress(d, t, v_url, c_time, "Wysyłanie..",
+>>>>>>> TelegramUserBot/master
                          f"{rip_data['title']}.mp3")))
         os.remove(f"{rip_data['id']}.mp3")
         await v_url.delete()
     elif video:
+<<<<<<< HEAD
         await v_url.edit(f"`Preparing to upload video:`\
         \n**{rip_data['title']}**\
         \nby *{rip_data['uploader']}*")
+=======
+        await v_url.edit(f"`Przygotowywanie do wysłania wideo:`\
+        \n**{rip_data['title']}**\
+        \nby __{rip_data['uploader']}__")
+>>>>>>> TelegramUserBot/master
         await v_url.client.send_file(
             v_url.chat_id,
             f"{rip_data['id']}.mp4",
@@ -675,7 +807,11 @@ async def download_video(v_url):
             caption=rip_data['title'],
             progress_callback=lambda d, t: asyncio.get_event_loop(
             ).create_task(
+<<<<<<< HEAD
                 progress(d, t, v_url, c_time, "Uploading..",
+=======
+                progress(d, t, v_url, c_time, "Wysyłanie..",
+>>>>>>> TelegramUserBot/master
                          f"{rip_data['title']}.mp4")))
         os.remove(f"{rip_data['id']}.mp4")
         await v_url.delete()

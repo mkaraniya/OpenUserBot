@@ -13,7 +13,11 @@ from userbot import CMD_HELP, BOTLOG, BOTLOG_CHATID
 from userbot.events import register
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.eval(?: |$)(.*)")
+=======
+@register(outgoing=True, pattern="^\.eval(?: |$)(.*)")
+>>>>>>> TelegramUserBot/master
 async def evaluate(query):
     """ For .eval command, evaluates the given Python expression. """
     if query.is_channel and not query.is_group:
@@ -67,7 +71,11 @@ async def evaluate(query):
             f"Eval query {expression} was executed successfully")
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern=r"^.exec(?: |$)([\s\S]*)")
+=======
+@register(outgoing=True, pattern=r"^\.exec(?: |$)([\s\S]*)")
+>>>>>>> TelegramUserBot/master
 async def run(run_q):
     """ For .exec command, which executes the dynamically created program """
     code = run_q.pattern_match.group(1)
@@ -132,7 +140,11 @@ execute. Use .help exec for an example.```")
             "Exec query " + codepre + " was executed successfully")
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.term(?: |$)(.*)")
+=======
+@register(outgoing=True, pattern="^\.term(?: |$)(.*)")
+>>>>>>> TelegramUserBot/master
 async def terminal_runner(term):
     """ For .term command, runs bash commands and scripts on your server. """
     curruser = getuser()
@@ -177,7 +189,11 @@ async def terminal_runner(term):
         remove("output.txt")
         return
 
+<<<<<<< HEAD
     if uid is 0:
+=======
+    if uid == 0:
+>>>>>>> TelegramUserBot/master
         await term.edit("`" f"{curruser}:~# {command}" f"\n{result}" "`")
     else:
         await term.edit("`" f"{curruser}:~$ {command}" f"\n{result}" "`")

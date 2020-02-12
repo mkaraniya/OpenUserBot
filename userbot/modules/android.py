@@ -17,7 +17,11 @@ DEVICES_DATA = 'https://raw.githubusercontent.com/androidtrackers/' \
                'certified-android-devices/master/devices.json'
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.magisk$")
+=======
+@register(outgoing=True, pattern="^\.magisk$")
+>>>>>>> TelegramUserBot/master
 async def magisk(request):
     """ magisk latest releases """
     magisk_dict = {
@@ -30,7 +34,11 @@ async def magisk(request):
         "Canary (Debug)":
         "https://raw.githubusercontent.com/topjohnwu/magisk_files/canary/debug.json"
     }
+<<<<<<< HEAD
     releases = 'Latest Magisk Releases:\n'
+=======
+    releases = 'Najnowsze wydania Magisk:\n'
+>>>>>>> TelegramUserBot/master
     for name, release_url in magisk_dict.items():
         data = get(release_url).json()
         releases += f'{name}: [ZIP v{data["magisk"]["version"]}]({data["magisk"]["link"]}) | ' \
@@ -38,7 +46,12 @@ async def magisk(request):
                     f'[Uninstaller]({data["uninstaller"]["link"]})\n'
     await request.edit(releases)
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern=r"^.device(?: |$)(\S*)")
+=======
+
+@register(outgoing=True, pattern=r"^\.device(?: |$)(\S*)")
+>>>>>>> TelegramUserBot/master
 async def device_info(request):
     """ get android device basic info from its codename """
     textx = await request.get_reply_message()
@@ -69,7 +82,11 @@ async def device_info(request):
     await request.edit(reply)
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern=r"^.codename(?: |)([\S]*)(?: |)([\s\S]*)")
+=======
+@register(outgoing=True, pattern=r"^\.codename(?: |)([\S]*)(?: |)([\s\S]*)")
+>>>>>>> TelegramUserBot/master
 async def codename_info(request):
     """ search for android codename """
     textx = await request.get_reply_message()
@@ -104,7 +121,11 @@ async def codename_info(request):
     await request.edit(reply)
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern=r"^.specs(?: |)([\S]*)(?: |)([\s\S]*)")
+=======
+@register(outgoing=True, pattern=r"^\.specs(?: |)([\S]*)(?: |)([\s\S]*)")
+>>>>>>> TelegramUserBot/master
 async def devices_specifications(request):
     """ Mobile devices specifications """
     textx = await request.get_reply_message()
@@ -157,7 +178,11 @@ async def devices_specifications(request):
     await request.edit(reply)
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern=r"^.twrp(?: |$)(\S*)")
+=======
+@register(outgoing=True, pattern=r"^\.twrp(?: |$)(\S*)")
+>>>>>>> TelegramUserBot/master
 async def twrp(request):
     """ get android device twrp """
     textx = await request.get_reply_message()
@@ -180,9 +205,15 @@ async def twrp(request):
     dl_file = download.text
     size = page.find("span", {"class": "filesize"}).text
     date = page.find("em").text.strip()
+<<<<<<< HEAD
     reply = f'**Latest TWRP for {device}:**\n' \
         f'[{dl_file}]({dl_link}) - __{size}__\n' \
         f'**Updated:** __{date}__\n'
+=======
+    reply = f'**Najnowsze TWRP dla {device}:**\n' \
+        f'[{dl_file}]({dl_link}) - __{size}__\n' \
+        f'**Zaktualizowano:** __{date}__\n'
+>>>>>>> TelegramUserBot/master
     await request.edit(reply)
 
 

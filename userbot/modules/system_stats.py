@@ -20,7 +20,11 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
 # ============================================
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.sysd$")
+=======
+@register(outgoing=True, pattern="^\.sysd$")
+>>>>>>> TelegramUserBot/master
 async def sysdetails(sysd):
     """ For .sysd command, get system info using neofetch. """
     try:
@@ -40,7 +44,11 @@ async def sysdetails(sysd):
         await sysd.edit("`Install neofetch first !!`")
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.botver$")
+=======
+@register(outgoing=True, pattern="^\.botver$")
+>>>>>>> TelegramUserBot/master
 async def bot_ver(event):
     """ For .botver command, get the bot version. """
     if which("git") is not None:
@@ -72,11 +80,19 @@ async def bot_ver(event):
                          "`")
     else:
         await event.edit(
+<<<<<<< HEAD
             "Shame that you don't have git, You're running 9.0 - 'Extended' anyway"
         )
 
 
 @register(outgoing=True, pattern="^.pip(?: |$)(.*)")
+=======
+            "Shame that you don't have git, You're running 5.0 - 'Extended' anyway"
+        )
+
+
+@register(outgoing=True, pattern="^\.pip(?: |$)(.*)")
+>>>>>>> TelegramUserBot/master
 async def pipcheck(pip):
     """ For .pip command, do a pip search. """
     pipmodule = pip.pattern_match.group(1)
@@ -119,6 +135,7 @@ async def pipcheck(pip):
         await pip.edit("`Use .help pip to see an example`")
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.alive$")
 async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
@@ -143,6 +160,20 @@ async def amireallyalive(alive):
 
 
 @register(outgoing=True, pattern="^.aliveu")
+=======
+@register(outgoing=True, pattern="^\.alive$")
+async def amireallyalive(alive):
+    """ For .alive command, check if the bot is running.  """
+    await alive.edit("`"
+                     "Bot kurwa działa jak złoto. \n\n"
+                     f"Wersja Telethon: {version.__version__} \n"
+                     f"Python: {python_version()} \n"
+                     f"User: {DEFAULTUSER}"
+                     "`")
+
+
+@register(outgoing=True, pattern="^\.aliveu")
+>>>>>>> TelegramUserBot/master
 async def amireallyaliveuser(username):
     """ For .aliveu command, change the username in the .alive command. """
     message = username.text
@@ -155,7 +186,11 @@ async def amireallyaliveuser(username):
     await username.edit("`" f"{output}" "`")
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.resetalive$")
+=======
+@register(outgoing=True, pattern="^\.resetalive$")
+>>>>>>> TelegramUserBot/master
 async def amireallyalivereset(ureset):
     """ For .resetalive command, reset the username in the .alive command. """
     global DEFAULTUSER
@@ -172,9 +207,15 @@ CMD_HELP.update(
     {"pip": ".pip <module(s)>\
     \nUsage: Does a search of pip modules(s)."})
 CMD_HELP.update({
+<<<<<<< HEAD
     "on":
     ".on\
     \nUsage: Type .on to see wether your bot is working or not.\
+=======
+    "alive":
+    ".alive\
+    \nUsage: Type .alive to see wether your bot is working or not.\
+>>>>>>> TelegramUserBot/master
     \n\n.aliveu <text>\
     \nUsage: Changes the 'user' in alive to the text you want.\
     \n\n.resetalive\

@@ -18,7 +18,11 @@ from userbot import CMD_HELP
 from userbot.events import register
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern=r"^.direct(?: |$)([\s\S]*)")
+=======
+@register(outgoing=True, pattern=r"^\.direct(?: |$)([\s\S]*)")
+>>>>>>> TelegramUserBot/master
 async def direct_link_generator(request):
     """ direct links generator """
     await request.edit("`Processing...`")

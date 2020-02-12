@@ -17,10 +17,17 @@ from userbot.events import register
 
 # ========================= CONSTANTS ============================
 UNAPPROVED_MSG = (
+<<<<<<< HEAD
     "`HeY! This is an automated message.\n\n`"
     "`I haven't approved you to PM yet.`"
     "`Please wait for me to look in, I mostly approve PMs.\n\n`"
     "`Until then, please don't spam my Mastor's PM, you'll get blocked and reported if you do so!`")
+=======
+    "`Hello! This is an automated message.\n\n`"
+    "`I haven't approved you to PM yet.`"
+    "`Please wait for me to look in, I mostly approve PMs.\n\n`"
+    "`Until then, please don't spam my PM, you'll get blocked and reported!`")
+>>>>>>> TelegramUserBot/master
 # =================================================================
 
 
@@ -69,7 +76,11 @@ async def permitpm(event):
 
                 if COUNT_PM[event.chat_id] > 4:
                     await event.respond(
+<<<<<<< HEAD
                         "`You were spamming my Mastor's PM, which I didn't like.`\n"
+=======
+                        "`You were spamming my PM, which I didn't like.`\n"
+>>>>>>> TelegramUserBot/master
                         "`You have been BLOCKED and reported as SPAM, until further notice.`"
                     )
 
@@ -134,7 +145,11 @@ async def auto_accept(event):
                     )
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.notifoff$")
+=======
+@register(outgoing=True, pattern="^\.notifoff$")
+>>>>>>> TelegramUserBot/master
 async def notifoff(noff_event):
     """ For .notifoff command, stop getting notifications from unapproved PMs. """
     try:
@@ -146,7 +161,11 @@ async def notifoff(noff_event):
     await noff_event.edit("`Notifications from unapproved PM's are silenced!`")
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.notifon$")
+=======
+@register(outgoing=True, pattern="^\.notifon$")
+>>>>>>> TelegramUserBot/master
 async def notifon(non_event):
     """ For .notifoff command, get notifications from unapproved PMs. """
     try:
@@ -158,7 +177,11 @@ async def notifon(non_event):
     await non_event.edit("`Notifications from unapproved PM's unmuted!`")
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.approve$")
+=======
+@register(outgoing=True, pattern="^\.approve$")
+>>>>>>> TelegramUserBot/master
 async def approvepm(apprvpm):
     """ For .approve command, give someone the permissions to PM you. """
     try:
@@ -199,7 +222,11 @@ async def approvepm(apprvpm):
         )
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.disapprove$")
+=======
+@register(outgoing=True, pattern="^\.disapprove$")
+>>>>>>> TelegramUserBot/master
 async def disapprovepm(disapprvpm):
     try:
         from userbot.modules.sql_helper.pm_permit_sql import dissprove
@@ -229,7 +256,11 @@ async def disapprovepm(disapprvpm):
         )
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.block$")
+=======
+@register(outgoing=True, pattern="^\.block$")
+>>>>>>> TelegramUserBot/master
 async def blockpm(block):
     """ For .block command, block people from PMing you! """
     if block.reply_to_msg_id:
@@ -260,7 +291,11 @@ async def blockpm(block):
         )
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.unblock$")
+=======
+@register(outgoing=True, pattern="^\.unblock$")
+>>>>>>> TelegramUserBot/master
 async def unblockpm(unblock):
     """ For .unblock command, let people PMing you again! """
     if unblock.reply_to_msg_id:

@@ -40,7 +40,11 @@ USERNAME_TAKEN = "```This username is already taken.```"
 # ===============================================================
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.reserved$")
+=======
+@register(outgoing=True, pattern="^\.reserved$")
+>>>>>>> TelegramUserBot/master
 async def mine(event):
     """ For .reserved command, get a list of your reserved usernames. """
     result = await bot(GetAdminedPublicChannelsRequest())
@@ -50,7 +54,11 @@ async def mine(event):
     await event.edit(output_str)
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.name")
+=======
+@register(outgoing=True, pattern="^\.name")
+>>>>>>> TelegramUserBot/master
 async def update_name(name):
     """ For .name command, change your name in Telegram. """
     newname = name.text[6:]
@@ -67,7 +75,11 @@ async def update_name(name):
     await name.edit(NAME_OK)
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.setpfp$")
+=======
+@register(outgoing=True, pattern="^\.setpfp$")
+>>>>>>> TelegramUserBot/master
 async def set_profilepic(propic):
     """ For .profilepic command, change your profile picture in Telegram. """
     replymsg = await propic.get_reply_message()
@@ -95,7 +107,11 @@ async def set_profilepic(propic):
             await propic.edit(INVALID_MEDIA)
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.setbio (.*)")
+=======
+@register(outgoing=True, pattern="^\.setbio (.*)")
+>>>>>>> TelegramUserBot/master
 async def set_biograph(setbio):
     """ For .setbio command, set a new bio for your profile in Telegram. """
     newbio = setbio.pattern_match.group(1)
@@ -103,7 +119,11 @@ async def set_biograph(setbio):
     await setbio.edit(BIO_SUCCESS)
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.username (.*)")
+=======
+@register(outgoing=True, pattern="^\.username (.*)")
+>>>>>>> TelegramUserBot/master
 async def update_username(username):
     """ For .username command, set a new username in Telegram. """
     newusername = username.pattern_match.group(1)
@@ -114,7 +134,11 @@ async def update_username(username):
         await username.edit(USERNAME_TAKEN)
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.count$")
+=======
+@register(outgoing=True, pattern="^\.count$")
+>>>>>>> TelegramUserBot/master
 async def count(event):
     """ For .count command, get profile stats. """
     u = 0
@@ -151,7 +175,11 @@ async def count(event):
     await event.edit(result)
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern=r"^.delpfp")
+=======
+@register(outgoing=True, pattern=r"^\.delpfp")
+>>>>>>> TelegramUserBot/master
 async def remove_profilepic(delpfp):
     """ For .delpfp command, delete your current profile picture in Telegram. """
     group = delpfp.text[8:]

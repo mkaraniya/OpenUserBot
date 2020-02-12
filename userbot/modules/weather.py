@@ -37,7 +37,11 @@ async def get_tz(con):
         return
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.weather(?: |$)(.*)")
+=======
+@register(outgoing=True, pattern="^\.weather(?: |$)(.*)")
+>>>>>>> TelegramUserBot/master
 async def get_weather(weather):
     """ For .weather command, gets the current weather of a city. """
 
@@ -47,6 +51,10 @@ async def get_weather(weather):
         return
 
     APPID = OWM_API
+<<<<<<< HEAD
+=======
+    result = None
+>>>>>>> TelegramUserBot/master
 
     if not weather.pattern_match.group(1):
         CITY = DEFCITY
@@ -76,7 +84,11 @@ async def get_weather(weather):
                 return
             CITY = newcity[0].strip() + "," + countrycode.strip()
 
+<<<<<<< HEAD
     url = f'https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={APPID}'
+=======
+    url = f'https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={APPID}&lang=pl'
+>>>>>>> TelegramUserBot/master
     request = get(url)
     result = json.loads(request.text)
 
@@ -90,7 +102,11 @@ async def get_weather(weather):
     min_temp = result['main']['temp_min']
     max_temp = result['main']['temp_max']
     desc = result['weather'][0]
+<<<<<<< HEAD
     desc = desc['main']
+=======
+    desc = desc['description']
+>>>>>>> TelegramUserBot/master
     country = result['sys']['country']
     sunrise = result['sys']['sunrise']
     sunset = result['sys']['sunset']
@@ -98,7 +114,11 @@ async def get_weather(weather):
     winddir = result['wind']['deg']
 
     ctimezone = tz(c_tz[country][0])
+<<<<<<< HEAD
     time = datetime.now(ctimezone).strftime("%A, %I:%M %p")
+=======
+    time = datetime.now(ctimezone).strftime("%A, %H:%M")
+>>>>>>> TelegramUserBot/master
     fullc_n = c_n[f"{country}"]
 
     dirs = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
@@ -118,24 +138,45 @@ async def get_weather(weather):
         return temp[0]
 
     def sun(unix):
+<<<<<<< HEAD
         xx = datetime.fromtimestamp(unix, tz=ctimezone).strftime("%I:%M %p")
         return xx
 
     await weather.edit(
         f"**Temperature:** `{celsius(curtemp)}°C | {fahrenheit(curtemp)}°F`\n"
+=======
+        xx = datetime.fromtimestamp(unix, tz=ctimezone).strftime("%H:%M")
+        return xx
+
+    await weather.edit(
+        f"**Temperatura:** `{celsius(curtemp)}°C | {fahrenheit(curtemp)}°F`\n"
+>>>>>>> TelegramUserBot/master
         +
         f"**Min. Temp.:** `{celsius(min_temp)}°C | {fahrenheit(min_temp)}°F`\n"
         +
         f"**Max. Temp.:** `{celsius(max_temp)}°C | {fahrenheit(max_temp)}°F`\n"
+<<<<<<< HEAD
         + f"**Humidity:** `{humidity}%`\n" +
         f"**Wind:** `{kmph[0]} kmh | {mph[0]} mph, {findir}`\n" +
         f"**Sunrise:** `{sun(sunrise)}`\n" +
         f"**Sunset:** `{sun(sunset)}`\n\n" + f"**{desc}**\n" +
+=======
+        + f"**Wilgotność:** `{humidity}%`\n" +
+        f"**Wiatr:** `{kmph[0]} kmh | {mph[0]} mph, {findir}`\n" +
+        f"**Wschód słońca:** `{sun(sunrise)}`\n" +
+        f"**Zachód słońca:** `{sun(sunset)}`\n\n" + 
+        f"**{desc}**\n\n" +
+>>>>>>> TelegramUserBot/master
         f"`{cityname}, {fullc_n}`\n" + f"`{time}`")
 
 
 CMD_HELP.update({
     "weather":
+<<<<<<< HEAD
     ".weather <city> or .weather <city>, <country name/code>\
     \nUsage: Gets the weather of a city."
+=======
+    ".weather <miasto> lub .weather <miasto>, <kraj nazwa/kod>\
+    \nUżycie: Wyświetla pogodę dla zadanego miejsca."
+>>>>>>> TelegramUserBot/master
 })

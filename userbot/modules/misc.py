@@ -14,11 +14,19 @@ import os
 import io
 import sys
 import json
+<<<<<<< HEAD
 from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot
 from userbot.events import register
 
 
 @register(outgoing=True, pattern="^.random")
+=======
+from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot, UPSTREAM_REPO_URL
+from userbot.events import register
+
+
+@register(outgoing=True, pattern="^\.random")
+>>>>>>> TelegramUserBot/master
 async def randomise(items):
     """ For .random command, get a random item from the list of items. """
     itemo = (items.text[8:]).split()
@@ -32,7 +40,11 @@ async def randomise(items):
                      itemo[index] + "`")
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.sleep( [0-9]+)?$")
+=======
+@register(outgoing=True, pattern="^\.sleep( [0-9]+)?$")
+>>>>>>> TelegramUserBot/master
 async def sleepybot(time):
     """ For .sleep command, let the userbot snooze for a few second. """
     message = time.text
@@ -51,7 +63,11 @@ async def sleepybot(time):
         await time.edit("`OK, I'm awake now.`")
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.shutdown$")
+=======
+@register(outgoing=True, pattern="^\.shutdown$")
+>>>>>>> TelegramUserBot/master
 async def killdabot(event):
     """ For .shutdown command, shut the bot down."""
     await event.edit("`Goodbye *Windows XP shutdown sound*....`")
@@ -61,15 +77,22 @@ async def killdabot(event):
     await bot.disconnect()
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.restart$")
 async def killdabot(event):
     await event.edit("`*i would be back in a moment*`")
+=======
+@register(outgoing=True, pattern="^\.restart$")
+async def killdabot(event):
+    await event.edit("Restartowanie...")
+>>>>>>> TelegramUserBot/master
     if BOTLOG:
         await event.client.send_message(BOTLOG_CHATID, "#RESTART \n"
                                         "Bot Restarted")
     await bot.disconnect()
     # Spin a new instance of bot
     execl(sys.executable, sys.executable, *sys.argv)
+<<<<<<< HEAD
     # Shut the existing one down
     exit()
 
@@ -111,6 +134,12 @@ async def reedme(e):
 
 # Copyright (c) Gegham Zakaryan | 2019
 @register(outgoing=True, pattern="^.repeat (.*)")
+=======
+
+
+# Copyright (c) Gegham Zakaryan | 2019
+@register(outgoing=True, pattern="^\.repeat (.*)")
+>>>>>>> TelegramUserBot/master
 async def repeat(rep):
     cnt, txt = rep.pattern_match.group(1).split(' ', 1)
     replyCount = int(cnt)
@@ -124,6 +153,7 @@ async def repeat(rep):
     await rep.edit(replyText)
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.repo$")
 async def repo_is_here(wannasee):
     """ For .repo command, just returns the repo URL. """
@@ -133,6 +163,16 @@ async def repo_is_here(wannasee):
 
 
 @register(outgoing=True, pattern="^.raw$")
+=======
+@register(outgoing=True, pattern="^\.repo$")
+async def repo_is_here(wannasee):
+    """ For .repo command, just returns the repo URL. """
+    await wannasee.edit(
+        f"Click [here]({UPSTREAM_REPO_URL}) to open my userbot's repository.")
+
+
+@register(outgoing=True, pattern="^\.raw$")
+>>>>>>> TelegramUserBot/master
 async def raw(event):
     the_real_message = None
     reply_to_id = None
@@ -175,6 +215,7 @@ CMD_HELP.update({
 hear Windows XP shutdown sound... but you don't."
 })
 
+<<<<<<< HEAD
 CMD_HELP.update(
     {'support': ".support\
 \nUsage: If you need help, use this command."})
@@ -185,6 +226,8 @@ CMD_HELP.update({
 \nUsage: Join the awesome Paperplane userbot community !!"
 })
 
+=======
+>>>>>>> TelegramUserBot/master
 CMD_HELP.update({
     'repo':
     '.repo\
@@ -197,10 +240,13 @@ CMD_HELP.update({
 \nUsage: Provide links to setup the userbot and it's modules."
 })
 
+<<<<<<< HEAD
 CMD_HELP.update(
     {"creator": ".creator\
 \nUsage: Know who created this awesome userbot !!"})
 
+=======
+>>>>>>> TelegramUserBot/master
 CMD_HELP.update({
     "repeat":
     ".repeat <no.> <text>\

@@ -1,7 +1,13 @@
 {
+<<<<<<< HEAD
   "name": "Telegram Open User Bot",
   "description": "[OpenUserBot] A modular Telegram userbot running on Python 3.7+ with an sqlalchemy database.",
   "logo": "https://telegra.ph/file/d04a1724c6dd8a957bd0e.png",
+=======
+  "name": "Telegram User Bot",
+  "description": "[Paperplane Extended] A modular Telegram userbot running on Python 3.6+ with an sqlalchemy database.",
+  "logo": "https://i.imgur.com/ATSG4w3.png",
+>>>>>>> TelegramUserBot/master
   "keywords": [
     "telegram",
     "userbot",
@@ -9,9 +15,15 @@
     "modular",
     "productivity"
   ],
+<<<<<<< HEAD
   "repository": "https://github.com/mkaraniya/OpenUserBot",
   "website": "https://telegra.ph/How-to-host-a-Telegram-Userbot-11-02",
   "success_url": "https://t.me/PPE_Support",
+=======
+  "repository": "https://github.com/AvinashReddy3108/PaperplaneExtended",
+  "website": "https://telegra.ph/How-to-host-a-Telegram-Userbot-07-24",
+  "success_url": "https://t.me/PaperplaneExtended",
+>>>>>>> TelegramUserBot/master
   "stack": "container",
   "env": {
     "API_KEY": {
@@ -26,6 +38,7 @@
       "description": "Get this value by running [python3 string_session.py] in Termux or local system.",
       "required": true
     },
+<<<<<<< HEAD
     "HEROKU_MEMEZ": {
       "description": "This should be True if the userbot is running on a Heroku Dyno.",
       "value": "True",
@@ -42,6 +55,19 @@
     "UPSTREAM_REPO_URL": {
       "description": "In case you maintain a fork, add your repo URL here.",
       "required": false
+=======
+    "UPSTREAM_REPO_URL": {
+      "description": "In case you maintain a fork, add your repo URL here.",
+      "required": false
+    },
+    "HEROKU_APIKEY": {
+      "description": "Your Heroku API key, get it from 'https://dashboard.heroku.com/account'",
+      "value": ""
+    },
+    "HEROKU_APPNAME": {
+      "description": "Add the Heroku app name here. It helps with userbot updates.",
+      "value": ""
+>>>>>>> TelegramUserBot/master
     },
     "COUNTRY": {
       "description": "Set your Country to be used in the .time and .date commands.",
@@ -136,7 +162,11 @@
     },
     "DEFAULT_BIO": {
       "description": "Default profile bio.",
+<<<<<<< HEAD
       "value": "[PM = Report Spam] I ❤ ️@OpenUserBot",
+=======
+      "value": "[PM = Report Spam] Beware of my userbot.",
+>>>>>>> TelegramUserBot/master
       "required": false
     },
     "ALIVE_NAME": {
@@ -151,10 +181,13 @@
       "description": "Enter the Google Drive authentication data, as a JSON structure.",
       "required": false
     },
+<<<<<<< HEAD
     "LYDIA_API_KEY": {
       "description": "This Module Needs CoffeeHouse API to work. so Join https://telegram.dog/IntellivoidDev and send #activateapi and follow instructions.",
       "required": false
     },
+=======
+>>>>>>> TelegramUserBot/master
     "WEATHER_DEFCITY": {
       "description": "Set the default city for the userbot's weather module.",
       "required": false
@@ -168,7 +201,11 @@
     {
       "plan": "heroku-postgresql",
       "options": {
+<<<<<<< HEAD
         "version": "12"
+=======
+        "version": "9.5"
+>>>>>>> TelegramUserBot/master
       }
     }
   ]

@@ -8,10 +8,14 @@ from userbot.events import register
 from userbot import CMD_HELP, BOTLOG_CHATID
 
 
+<<<<<<< HEAD
 @register(outgoing=True,
           pattern=r"\$\w*",
           ignore_unsafe=True,
           disable_errors=True)
+=======
+@register(outgoing=True, pattern=r"\$\w*", disable_errors=True)
+>>>>>>> TelegramUserBot/master
 async def on_snip(event):
     """ Snips logic. """
     try:
@@ -30,13 +34,24 @@ async def on_snip(event):
                                         msg_o.message,
                                         reply_to=message_id_to_reply,
                                         file=msg_o.media)
+<<<<<<< HEAD
+=======
+        await event.delete()
+>>>>>>> TelegramUserBot/master
     elif snip and snip.reply:
         await event.client.send_message(event.chat_id,
                                         snip.reply,
                                         reply_to=message_id_to_reply)
+<<<<<<< HEAD
 
 
 @register(outgoing=True, pattern="^.snip (\w*)")
+=======
+        await event.delete()
+
+
+@register(outgoing=True, pattern="^\.snip (\w*)")
+>>>>>>> TelegramUserBot/master
 async def on_snip_save(event):
     """ For .snip command, saves snips for future use. """
     try:
@@ -76,7 +91,11 @@ async def on_snip_save(event):
         await event.edit(success.format('saved', keyword))
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.snips$")
+=======
+@register(outgoing=True, pattern="^\.snips$")
+>>>>>>> TelegramUserBot/master
 async def on_snip_list(event):
     """ For .snips command, lists snips saved by you. """
     try:
@@ -97,7 +116,11 @@ async def on_snip_list(event):
     await event.edit(message)
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.remsnip (\w*)")
+=======
+@register(outgoing=True, pattern="^\.remsnip (\w*)")
+>>>>>>> TelegramUserBot/master
 async def on_snip_delete(event):
     """ For .remsnip command, deletes a snip. """
     try:

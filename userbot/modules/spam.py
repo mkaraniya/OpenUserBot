@@ -10,7 +10,11 @@ from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP
 from userbot.events import register
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.cspam (.*)")
+=======
+@register(outgoing=True, pattern="^\.cspam (.*)")
+>>>>>>> TelegramUserBot/master
 async def tmeme(e):
     cspam = str(e.pattern_match.group(1))
     message = cspam.replace(" ", "")
@@ -23,7 +27,11 @@ async def tmeme(e):
             "TSpam was executed successfully")
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.wspam (.*)")
+=======
+@register(outgoing=True, pattern="^\.wspam (.*)")
+>>>>>>> TelegramUserBot/master
 async def tmeme(e):
     wspam = str(e.pattern_match.group(1))
     message = wspam.split()
@@ -36,7 +44,11 @@ async def tmeme(e):
             "WSpam was executed successfully")
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.spam (.*)")
+=======
+@register(outgoing=True, pattern="^\.spam (.*)")
+>>>>>>> TelegramUserBot/master
 async def spammer(e):
     counter = int(e.pattern_match.group(1).split(' ', 1)[0])
     spam_message = str(e.pattern_match.group(1).split(' ', 1)[1])
@@ -47,7 +59,11 @@ async def spammer(e):
                                     "Spam was executed successfully")
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.picspam")
+=======
+@register(outgoing=True, pattern="^\.picspam")
+>>>>>>> TelegramUserBot/master
 async def tiny_pic_spam(e):
     message = e.text
     text = message.split()
@@ -62,7 +78,11 @@ async def tiny_pic_spam(e):
             "PicSpam was executed successfully")
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.delayspam (.*)")
+=======
+@register(outgoing=True, pattern="^\.delayspam (.*)")
+>>>>>>> TelegramUserBot/master
 async def spammer(e):
     spamDelay = float(e.pattern_match.group(1).split(' ', 2)[0])
     counter = int(e.pattern_match.group(1).split(' ', 2)[1])

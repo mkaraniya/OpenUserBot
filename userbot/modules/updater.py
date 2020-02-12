@@ -2,7 +2,10 @@
 #
 # Licensed under the Raphielscape Public License, Version 1.c (the "License");
 # you may not use this file except in compliance with the License.
+<<<<<<< HEAD
 # credits to @AvinashReddy3108
+=======
+>>>>>>> TelegramUserBot/master
 #
 """
 This module updates the userbot based on Upstream revision
@@ -47,12 +50,17 @@ async def update_requirements():
 @register(outgoing=True, pattern="^\.update(?: |$)(.*)")
 async def upstream(ups):
     "For .update command, check if the bot is up to date, update if specified"
+<<<<<<< HEAD
     await ups.edit("`Checking for updates, please wait....`")
+=======
+    await ups.edit("`Sprawdzanie aktaulizacji, poczekaj....`")
+>>>>>>> TelegramUserBot/master
     conf = ups.pattern_match.group(1)
     off_repo = UPSTREAM_REPO_URL
     force_update = False
 
     try:
+<<<<<<< HEAD
         txt = "`Oops.. Updater cannot continue due to "
         txt += "some problems occured`\n\n**LOGTRACE:**\n"
         repo = Repo()
@@ -62,19 +70,36 @@ async def upstream(ups):
         return
     except GitCommandError as error:
         await ups.edit(f'{txt}\n`Early failure! {error}`')
+=======
+        txt = "`Oops.. Wystąpił błąd "
+        txt += "some problems occured`\n\n**LOGTRACE:**\n"
+        repo = Repo()
+    except NoSuchPathError as error:
+        await ups.edit(f'{txt}\n`folder {error} nie odnaleziony`')
+        repo.__del__()
+        return
+    except GitCommandError as error:
+        await ups.edit(f'{txt}\n`Wczesny błąd! {error}`')
+>>>>>>> TelegramUserBot/master
         repo.__del__()
         return
     except InvalidGitRepositoryError as error:
         if conf != "now":
             await ups.edit(
+<<<<<<< HEAD
                 f"`Unfortunately, the directory {error} does not seem to be a git repository.\
             \nBut we can fix that by force updating the userbot using .update now.`"
+=======
+                f"`Niestety folder {error} nie wygląda na repo .git\
+            \nAle możesz to wymusić wpisując .update now`"
+>>>>>>> TelegramUserBot/master
             )
             return
         repo = Repo.init()
         origin = repo.create_remote('upstream', off_repo)
         origin.fetch()
         force_update = True
+<<<<<<< HEAD
         repo.create_head('sql-extended', origin.refs.sql-extended)
         repo.heads.sql-extended.set_tracking_branch(origin.refs.sql-extended)
         repo.heads.sql-extended.checkout(True)
@@ -86,6 +111,19 @@ async def upstream(ups):
             'in that case, Updater is unable to identify '
             'which branch is to be merged. '
             'please checkout to any official branch`')
+=======
+        repo.create_head('master', origin.refs.master)
+        repo.heads.master.set_tracking_branch(origin.refs.master)
+        repo.heads.master.checkout(True)
+
+    ac_br = repo.active_branch.name
+    if ac_br != 'master':
+        await ups.edit(
+            f'**[Aktualizator]:**` Wygląda na to że używasz własnego repozytorium ({ac_br}). '
+            'w tym wypadku aktualizator nie wykryje wersji '
+            'która może zostać scalona. '
+            'wybierz oficjalny branch`')
+>>>>>>> TelegramUserBot/master
         repo.__del__()
         return
 
@@ -101,14 +139,24 @@ async def upstream(ups):
 
     if not changelog and not force_update:
         await ups.edit(
+<<<<<<< HEAD
             f'\n`Your BOT is`  **up-to-date**  `with`  **{ac_br}**\n')
+=======
+            f'\n`Twój bot jest aktualny`  **up-to-date**  `z`  **{ac_br}**\n')
+>>>>>>> TelegramUserBot/master
         repo.__del__()
         return
 
     if conf != "now" and not force_update:
+<<<<<<< HEAD
         changelog_str = f'**New UPDATE available for [{ac_br}]:\n\nCHANGELOG:**\n`{changelog}`'
         if len(changelog_str) > 4096:
             await ups.edit("`Changelog is too big, view the file to see it.`")
+=======
+        changelog_str = f'**Nowa aktualizacja dostępna [{ac_br}]:\n\nZMIANY:**\n`{changelog}`'
+        if len(changelog_str) > 4096:
+            await ups.edit("`Dziennik zmian jest za duzy.`")
+>>>>>>> TelegramUserBot/master
             file = open("output.txt", "w+")
             file.write(changelog_str)
             file.close()
@@ -120,14 +168,24 @@ async def upstream(ups):
             remove("output.txt")
         else:
             await ups.edit(changelog_str)
+<<<<<<< HEAD
         await ups.respond('`do \".update now\" to update`')
+=======
+        await ups.respond('`zrob \".update now\" aby zaaktualizować`')
+>>>>>>> TelegramUserBot/master
         return
 
     if force_update:
         await ups.edit(
+<<<<<<< HEAD
             '`Force-Syncing to latest stable userbot code, please wait...`')
     else:
         await ups.edit('`Updating userbot, please wait....`')
+=======
+            '`Wymuszono zbudowanie nowej wersji instancji. Zaczekaj...`')
+    else:
+        await ups.edit('`Aktualizowanie bota, Zaczekaj....`')
+>>>>>>> TelegramUserBot/master
     # We're in a Heroku Dyno, handle it's memez.
     if HEROKU_APIKEY is not None:
         import heroku3
@@ -136,7 +194,11 @@ async def upstream(ups):
         heroku_applications = heroku.apps()
         if not HEROKU_APPNAME:
             await ups.edit(
+<<<<<<< HEAD
                 '`[HEROKU MEMEZ] Please set up the HEROKU_APPNAME variable to be able to update userbot.`'
+=======
+                '`[Heroku] Prosze ustaw HEROKU_APPNAME variable aby moc aktualizwać bota.`'
+>>>>>>> TelegramUserBot/master
             )
             repo.__del__()
             return
@@ -146,12 +208,21 @@ async def upstream(ups):
                 break
         if heroku_app is None:
             await ups.edit(
+<<<<<<< HEAD
                 f'{txt}\n`Invalid Heroku credentials for updating userbot dyno.`'
             )
             repo.__del__()
             return
         await ups.edit('`[HEROKU MEMEZ]\
                         \nUserbot dyno build in progress, please wait for it to complete.`'
+=======
+                f'{txt}\n`Złe dane heroku.`'
+            )
+            repo.__del__()
+            return
+        await ups.edit('`[HEROKU]\
+                        \nBudowa instancji rozpoczęta, poczekaj na zakończenie.`'
+>>>>>>> TelegramUserBot/master
                        )
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
@@ -163,13 +234,22 @@ async def upstream(ups):
         else:
             remote = repo.create_remote("heroku", heroku_git_url)
         try:
+<<<<<<< HEAD
             remote.push(refspec="HEAD:refs/heads/sql-extended", force=True)
+=======
+            remote.push(refspec="HEAD:refs/heads/master", force=True)
+>>>>>>> TelegramUserBot/master
         except GitCommandError as error:
             await ups.edit(f'{txt}\n`Here is the error log:\n{error}`')
             repo.__del__()
             return
+<<<<<<< HEAD
         await ups.edit('`Successfully Updated!\n'
                        'Restarting, please wait...`')
+=======
+        await ups.edit('`Pomyślnie zaaktualizowano!\n'
+                       'Restartowanie, zaczekaj...`')
+>>>>>>> TelegramUserBot/master
     else:
         # Classic Updater, pretty straightforward.
         try:
@@ -177,8 +257,13 @@ async def upstream(ups):
         except GitCommandError:
             repo.git.reset("--hard", "FETCH_HEAD")
         reqs_upgrade = await update_requirements()
+<<<<<<< HEAD
         await ups.edit('`Successfully Updated!\n'
                        'Bot is restarting... Wait for a second!`')
+=======
+        await ups.edit('`Pomyślnie zaaktualizowano!\n'
+                       'Restartowanie, zaczekaj...`')
+>>>>>>> TelegramUserBot/master
         # Spin a new instance of bot
         args = [sys.executable, "-m", "userbot"]
         execle(sys.executable, *args, environ)

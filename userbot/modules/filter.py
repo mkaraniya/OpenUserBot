@@ -37,7 +37,11 @@ async def filter_incoming_handler(handler):
         pass
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.filter (\w*)")
+=======
+@register(outgoing=True, pattern="^\.filter (\w*)")
+>>>>>>> TelegramUserBot/master
 async def add_new_filter(new_handler):
     """ For .filter command, allows adding new filters in a chat """
     try:
@@ -78,7 +82,11 @@ async def add_new_filter(new_handler):
         await new_handler.edit(success.format(keyword, 'updated'))
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.stop (\w*)")
+=======
+@register(outgoing=True, pattern="^\.stop (\w*)")
+>>>>>>> TelegramUserBot/master
 async def remove_a_filter(r_handler):
     """ For .stop command, allows you to remove a filter from a chat. """
     try:
@@ -94,7 +102,11 @@ async def remove_a_filter(r_handler):
             "`Filter` **{}** `was deleted successfully`".format(filt))
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.rmbotfilters (.*)")
+=======
+@register(outgoing=True, pattern="^\.rmbotfilters (.*)")
+>>>>>>> TelegramUserBot/master
 async def kick_marie_filter(event):
     """ For .rmfilters command, allows you to kick all \
         Marie(or her clones) filters from a chat. """
@@ -121,7 +133,11 @@ async def kick_marie_filter(event):
             BOTLOG_CHATID, "I cleaned all filters at " + str(event.chat_id))
 
 
+<<<<<<< HEAD
 @register(outgoing=True, pattern="^.filters$")
+=======
+@register(outgoing=True, pattern="^\.filters$")
+>>>>>>> TelegramUserBot/master
 async def filters_active(event):
     """ For .filters command, lists all of the active filters in a chat. """
     try:
