@@ -128,7 +128,7 @@ async def type_afk_is_not_true(notafk):
     global AFKREASON
     if ISAFK:
         ISAFK = False
-        await notafk.respond("I'm no longer AFK.")
+        await notafk.respond("- Już jestem -")
         await sleep(2)
         if BOTLOG:
             await notafk.client.send_message(
