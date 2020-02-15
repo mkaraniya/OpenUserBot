@@ -142,7 +142,7 @@ async def count(event):
         else:
             print(d)
     
-    result += f"**- MOJE STATYSTYKI -**\n"
+    result += f"**— MOJE STATYSTYKI —**\n"
     result += f"`Użytkownicy:`\t**{u}**\n"
     result += f"`Grupy:`\t**{g}**\n"
     result += f"`Super grupy:`\t**{c}**\n"
