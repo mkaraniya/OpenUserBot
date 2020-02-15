@@ -112,7 +112,7 @@ async def set_afk(afk_e):
         await afk_e.edit(f"Jestem z dala od klawiatury!\
         \nPowód: `{string}`")
     else:
-        await afk_e.edit("AFK: Musze kończyć , narazie!")
+        await afk_e.edit("AFK: Musze kończyć, narazie!")
     if BOTLOG:
         await afk_e.client.send_message(BOTLOG_CHATID, "#AFK\nAFCZYSZ SUKO!")
     ISAFK = True
@@ -128,7 +128,7 @@ async def type_afk_is_not_true(notafk):
     global AFKREASON
     if ISAFK:
         ISAFK = False
-        await notafk.respond("- Już jestem -")
+        await notafk.respond("**— JUŻ JESTEM —**")
         await sleep(2)
         if BOTLOG:
             await notafk.client.send_message(
