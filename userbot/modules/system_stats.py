@@ -128,11 +128,11 @@ async def amireallyalive(alive):
                      f"Telethon version: {version.__version__} \n"
                      f"Python: {python_version()} \n"
                      f"------------------------------------ \n"
-                     f"Website: https://www.facebook.com/Teknoways \n"
+                     f"Website: https://www.facebook.com/shahidparvez1999 \n"
                      f"User: {DEFAULTUSER} \n"
-                     f"Maintainer: @Mayur_Karaniya \n"
-                     f"Admin: @Three_Cube_TeKnoways \n"
-                     f"Userbot: @testing_userbot "
+                     f"Maintainer: @geek_sh \n"
+                     f"Admin: @geek_sh \n"
+                     f"Userbot: @dualaxis_userbot "
                      )    
 
 
