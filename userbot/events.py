@@ -60,10 +60,6 @@ def register(**args):
             if not trigger_on_fwd and check.fwd_from:
                 return
 
-            if groups_only and not check.is_group:
-                await check.respond("`I don't think this is a group.`")
-                return
-
             try:
                 await func(check)
 
@@ -128,15 +124,10 @@ def register(**args):
                     file.close()
 
                     if LOGSPAMMER:
-                        await check.client.respond(
-                            "`Sorry, my userbot has crashed.\
-                        \nThe error logs are stored in the userbot's log chat.`"
-                        )
-
-                    await check.client.send_file(send_to,
-                                                 "error.log",
-                                                 caption=text)
-                    remove("error.log")
+                        await check.client.send_file(send_to,
+                                                     "error.log",
+                                                      caption=text)
+                        remove("error.log")
             else:
                 pass
 
