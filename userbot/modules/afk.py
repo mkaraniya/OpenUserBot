@@ -114,7 +114,7 @@ async def set_afk(afk_e):
     else:
         await afk_e.edit("AFK: Musze kończyć, narazie!")
     if BOTLOG:
-        await afk_e.client.send_message(BOTLOG_CHATID, "#AFK\nAFCZYSZ SUKO!")
+        await afk_e.client.send_message(BOTLOG_CHATID, "#AFK\nJESTEŚ AFK!")
     ISAFK = True
     raise StopPropagation
 
