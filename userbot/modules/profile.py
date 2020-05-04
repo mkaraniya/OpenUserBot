@@ -141,13 +141,12 @@ async def count(event):
                 c += 1
         else:
             print(d)
-    
-    result += f"**— MOJE STATYSTYKI —**\n"
-    result += f"`Użytkownicy:`\t**{u}**\n"
-    result += f"`Grupy:`\t**{g}**\n"
-    result += f"`Super grupy:`\t**{c}**\n"
-    result += f"`Kanały:`\t**{bc}**\n"
-    result += f"`Boty:`\t**{b}**"
+
+    result += f"`Users:`\t**{u}**\n"
+    result += f"`Groups:`\t**{g}**\n"
+    result += f"`Super Groups:`\t**{c}**\n"
+    result += f"`Channels:`\t**{bc}**\n"
+    result += f"`Bots:`\t**{b}**"
 
     await event.edit(result)
 

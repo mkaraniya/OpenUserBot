@@ -2,13 +2,16 @@
 #
 # Licensed under the Raphielscape Public License, Version 1.c (the "License");
 # you may not use this file except in compliance with the License.
+# cpin courtesy Uniborg.
 """
 Userbot module to help you manage a group
 """
 
 from asyncio import sleep
 from os import remove
-
+from telethon import events
+from telethon.tl import functions, types
+from platform import python_version, uname
 from telethon.errors import (BadRequestError, ChatAdminRequiredError,
                              ImageProcessFailedError, PhotoCropSizeSmallError,
                              UserAdminInvalidError)
@@ -656,7 +659,31 @@ async def pin(msg):
             f"CHAT: {msg.chat.title}(`{msg.chat_id}`)\n"
             f"LOUD: {not is_silent}")
 
+@register(outgoing=True, pattern="^.cpin(?: |$)(.*)")
+async def _(event):
+    if event.fwd_from:
+        return
+    silent = True
+    input_str = event.pattern_match.group(1)
+    if input_str:
+        silent = False
+    if event.message.reply_to_msg_id is not None:
+        message_id = event.message.reply_to_msg_id
+        try:
+            await bot(functions.messages.UpdatePinnedMessageRequest(
+                event.chat_id,
+                message_id,
+                silent
+            ))
+        except Exception as e:
+            await event.edit(str(e))
+        else:
+            await event.delete()
+    else:
+        await event.edit("Reply to a message to pin the message in this Channel.")
 
+
+        
 @register(outgoing=True, pattern="^.kick(?: |$)(.*)")
 async def kick(usr):
     """ For .kick command, kicks the replied/tagged person from the group. """
@@ -885,10 +912,10 @@ async def get_bots(show):
     title = info.title if info.title else "this chat"
     mentions = f'<b>Bots in {title}:</b>\n'
     try:
-        if isinstance(message.to_id, PeerChat):
-            await show.edit("`I heard that only Supergroups can have bots.`")
-            return
-        else:
+       # if isinstance(message.to_id, PeerChat):
+        #    await show.edit("`I heard that only Supergroups can have bots.`")
+         #   return
+       # else:
             async for user in show.client.iter_participants(
                     show.chat_id, filter=ChannelParticipantsBots):
                 if not user.deleted:
@@ -941,6 +968,10 @@ CMD_HELP.update({
 \nUsage: Retrieves a list of admins in the chat.\
 \n\n.bots\
 \nUsage: Retrieves a list of bots in the chat.\
+\n\n.pin <reply/tag>\
+\nUsage: pins the replied/tagged message on the top the chat silently.\
+\n\n.cpin <reply/tag>\
+\nUsage: pins the replied/tagged message on the top the chat LOUDLY.\
 \n\n.users or .users <name of member>\
 \nUsage: Retrieves all (or queried) users in the chat.\
 \n\n.setgppic <reply to image>\
