@@ -172,6 +172,15 @@ GENIUS = os.environ.get("GENIUS_API_TOKEN", None)
 MONGOCLIENT = MongoClient(MONGO_URI, 27017, serverSelectionTimeoutMS=1)
 MONGO = MONGOCLIENT.userbot
 
+# Array of words that are not allowed to be executed from .term command
+# Default words are added so that the user doesn't enable them at any cost
+DISABLED_TERM_WORDS = ["userbot.session", "config.env", "app.json"]
+if os.environ.get("DISABLED_TERM_WORDS", None):
+    print(os.environ.get("DISABLED_TERM_WORDS", None).split(','))
+    temp = list(filter(lambda word: not(not word or word.isspace()),
+                       os.environ.get("DISABLED_TERM_WORDS", None).split(',')))
+    DISABLED_TERM_WORDS.extend(temp)
+
 
 def is_mongo_alive():
     try:
