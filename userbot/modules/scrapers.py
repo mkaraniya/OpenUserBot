@@ -517,7 +517,7 @@ async def yt_search(video_q):
     results = json.loads(YoutubeSearch(str(args), max_results=8).to_json())
     text = ""
     for i in results["videos"]:
-           text += f"<i>◍ {i['title']}</i>\nhttps://www.youtube.com{i['link']}\n\n"
+           text += f"**◍ {i['title']}**\nhttps://www.youtube.com{i['link']}\n\n"
     await video_q.edit(text)
 
 
