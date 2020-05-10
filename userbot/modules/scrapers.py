@@ -8,6 +8,7 @@
 """ Userbot module containing various scrapers. """
 
 import os
+import json
 import time
 import asyncio
 import shutil
@@ -17,6 +18,7 @@ from time import sleep
 from html import unescape
 from re import findall
 from selenium import webdriver
+from youtube_search import YoutubeSearch
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.options import Options
 from urllib.parse import quote_plus
@@ -506,31 +508,17 @@ async def lang(value):
             f"`Language for {scraper} changed to {LANG.title()}.`")
 
 
-@register(outgoing=True, pattern="^.yt (.*)")
+@register(outgoing=True, pattern="^\.yt (.*)")
 async def yt_search(video_q):
     """ For .yt command, do a YouTube search from Telegram. """
     query = video_q.pattern_match.group(1)
-    result = ''
-
-    if not YOUTUBE_API_KEY:
-        await video_q.edit(
-            "`Error: YouTube API key missing! Add it to environment vars or config.env.`"
-        )
-        return
-
-    await video_q.edit("```Processing...```")
-
-    full_response = await youtube_search(query)
-    videos_json = full_response[1]
-
-    for video in videos_json:
-        title = f"{unescape(video['snippet']['title'])}"
-        link = f"https://youtu.be/{video['id']['videoId']}"
-        result += f"{title}\n{link}\n\n"
-
-    reply_text = f"**Search Query:**\n`{query}`\n\n**Results:**\n\n{result}"
-
-    await video_q.edit(reply_text)
+    if not query:
+         await video_q.edit("`Enter a search query.`")
+    results = json.loads(YoutubeSearch(str(args), max_results=8).to_json())
+    text = ""
+    for i in results["videos"]:
+           text += f"<i>◍ {i['title']}</i>\nhttps://www.youtube.com{i['link']}\n\n"
+    await video_q.edit(text)
 
 
 async def youtube_search(query,
