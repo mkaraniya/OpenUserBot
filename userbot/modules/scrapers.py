@@ -482,7 +482,7 @@ async def lang(value):
             BOTLOG_CHATID,
             f"`Language for {scraper} changed to {LANG.title()}.`")
 
-
+"""
 @register(outgoing=True, pattern="^.yt (.*)")
 async def yt_search(video_q):
     """ For .yt command, do a YouTube search from Telegram. """
@@ -544,7 +544,7 @@ async def youtube_search(query,
     except KeyError:
         nexttok = "KeyError, try again."
         return (nexttok, videos)
-
+"""
 
 @register(outgoing=True, pattern=r".rip(audio|video) (.*)")
 async def download_video(v_url):
