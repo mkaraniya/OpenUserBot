@@ -26,7 +26,9 @@ from urllib.error import HTTPError
 from telethon import events
 from wikipedia import summary
 from wikipedia.exceptions import DisambiguationError, PageError
+import urbandict
 from urbandict import define
+import asyncurban
 from requests import get
 from search_engine_parser import GoogleSearch
 from googleapiclient.discovery import build
@@ -48,6 +50,7 @@ from userbot.modules.upload_download import progress, humanbytes, time_formatter
 from userbot.google_images_download import googleimagesdownload
 import subprocess
 from datetime import datetime
+import asyncurban
 
 
 CARBONLANG = "auto"
@@ -61,7 +64,7 @@ async def setlang(prog):
     CARBONLANG = prog.pattern_match.group(1)
     await prog.edit(f"Language for carbon.now.sh set to {CARBONLANG}")
 
-@register(outgoing=True, pattern="^.carbon")
+@register(outgoing=True, pattern="^.crb")
 async def carbon_api(e):
     """ A Wrapper for carbon.now.sh """
     await e.edit("`Processing..`")
@@ -253,44 +256,18 @@ async def wiki(wiki_q):
 
 
 @register(outgoing=True, pattern="^.ud (.*)")
-async def urban_dict(ud_e):
-    """ For .ud command, fetch content from Urban Dictionary. """
-    await ud_e.edit("Processing...")
-    query = ud_e.pattern_match.group(1)
-    try:
-        define(query)
-    except HTTPError:
-        await ud_e.edit(f"Sorry, couldn't find any results for: {query}")
+async def _(event):
+    if event.fwd_from:
         return
-    mean = define(query)
-    deflen = sum(len(i) for i in mean[0]["def"])
-    exalen = sum(len(i) for i in mean[0]["example"])
-    meanlen = deflen + exalen
-    if int(meanlen) >= 0:
-        if int(meanlen) >= 4096:
-            await ud_e.edit("`Output too large, sending as file.`")
-            file = open("output.txt", "w+")
-            file.write("Text: " + query + "\n\nMeaning: " + mean[0]["def"] +
-                       "\n\n" + "Example: \n" + mean[0]["example"])
-            file.close()
-            await ud_e.client.send_file(
-                ud_e.chat_id,
-                "output.txt",
-                caption="`Output was too large, sent it as a file.`")
-            if os.path.exists("output.txt"):
-                os.remove("output.txt")
-            await ud_e.delete()
-            return
-        await ud_e.edit("Text: **" + query + "**\n\nMeaning: **" +
-                        mean[0]["def"] + "**\n\n" + "Example: \n__" +
-                        mean[0]["example"] + "__")
-        if BOTLOG:
-            await ud_e.client.send_message(
-                BOTLOG_CHATID,
-                "ud query `" + query + "` executed successfully.")
-    else:
-        await ud_e.edit("No result found for **" + query + "**")
-
+    await event.edit("processing...")
+    word = event.pattern_match.group(1)
+    urban = asyncurban.UrbanDictionary()
+    try:
+        mean = await urban.get_word(word)
+        await event.edit("Text: **{}**\n\nMeaning: **{}**\n\nExample: __{}__".format(mean.word, mean.definition, mean.example))
+    except asyncurban.WordNotFoundError:
+        await event.edit("No result found for **" + word + "**")
+        
 
 @register(outgoing=True, pattern=r"^.tts(?: |$)([\s\S]*)")
 async def text_to_speech(query):
@@ -508,7 +485,8 @@ async def lang(value):
             f"`Language for {scraper} changed to {LANG.title()}.`")
 
 
-@register(outgoing=True, pattern="^\.yt (.*)")
+"""
+@register(outgoing=True, pattern="^.yt (.*)")
 async def yt_search(video_q):
     """ For .yt command, do a YouTube search from Telegram. """
     query = video_q.pattern_match.group(1)
@@ -555,7 +533,7 @@ async def youtube_search(query,
     except KeyError:
         nexttok = "KeyError, try again."
         return (nexttok, videos)
-
+"""
 
 @register(outgoing=True, pattern=r".rip(audio|video) (.*)")
 async def download_video(v_url):
@@ -711,7 +689,7 @@ CMD_HELP.update({
 })
 CMD_HELP.update({
     'carbon':
-    '.carbon <text> [or reply]\
+    '.crb <text> [or reply]\
         \nUsage: Beautify your code using carbon.now.sh\nUse .crblang <text> to set language for your code.'
 })
 CMD_HELP.update(

@@ -16,7 +16,7 @@ from userbot.events import register
 from userbot import GOOGLE_CHROME_BIN, CHROME_DRIVER, CMD_HELP
 
 
-@register(pattern=r".ss (.*)", outgoing=True)
+@register(outgoing=True, pattern="^.ss(?: |$)(.*)", disable_errors=True)
 async def capture(url):
     """ For .ss command, capture a website's screenshot and send the photo. """
     await url.edit("`Processing ...`")
@@ -35,8 +35,15 @@ async def capture(url):
     if link_match:
         link = link_match.group()
     else:
-        await url.edit("`I need a valid link to take screenshots from.`")
-        return
+        prefix_str = 'https://'
+        complete_link = (("{}{}").format(prefix_str, input_str))
+        link_match = match(r'\bhttps?://.*\.\S+', complete_link)
+        if link_match:
+            link = link_match.group()
+        else:
+            return await url.edit("`I need a valid link to take screenshots from.`")
+
+
     driver.get(link)
     height = driver.execute_script(
         "return Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);"
@@ -73,3 +80,4 @@ CMD_HELP.update({
     \nUsage: Takes a screenshot of a website and sends the screenshot.\
     \nExample of a valid URL : `https://www.google.com`"
 })
+

@@ -465,10 +465,10 @@ PROSTR = [
 ]
 
 NUBSTR = [
-    "`Only few were Pro and you join the Party`",
-    "`Only few were Pro and you join the Party`",
-    "`Only few were Pro and you join the Party`",
-    "`Only few were Pro and you join the Party`",
+    "`Only few here were Pro and then you join the Party`",
+    "`Only few here were Pro and then you join the Party`",
+    "`Only few here were Pro and then you join the Party`",
+    "`Only few here were Pro and then you join the Party`",
 ]
 
 SHGS = [
@@ -622,7 +622,7 @@ WHERE = ["in the chest", "on the head", "on the butt", "on the crotch"]
 # ===========================================
 
 
-@register(outgoing=True, pattern=r"^.(\w+)say (.*)")
+@register(outgoing=True, pattern=r"^.(\w+)says (.*)")
 async def univsaye(cowmsg):
     """ For .cowsay module, userbot wrapper for cow which says things. """
     arg = cowmsg.pattern_match.group(1).lower()
@@ -1099,17 +1099,17 @@ async def scam(event):
     ]
     input_str = event.pattern_match.group(1)
     args = input_str.split()
-    if len(args) is 0:  # Let bot decide action and time
+    if len(args) == 0:  # Let bot decide action and time
         scam_action = choice(options)
         scam_time = randint(30, 60)
-    elif len(args) is 1:  # User decides time/action, bot decides the other.
+    elif len(args) == 1:  # User decides time/action, bot decides the other.
         try:
             scam_action = str(args[0]).lower()
             scam_time = randint(30, 60)
         except ValueError:
             scam_action = choice(options)
             scam_time = int(args[0])
-    elif len(args) is 2:  # User decides both action and time
+    elif len(args) == 2:  # User decides both action and time
         scam_action = str(args[0]).lower()
         scam_time = int(args[1])
     else:
@@ -1152,7 +1152,7 @@ async def typewriter(typew):
 
 CMD_HELP.update({
     "memes":
-    ".cowsay\
+    ".cowsays\
 \nUsage: cow which says things.\
 \n\n:/\
 \nUsage: Check yourself ;)\
