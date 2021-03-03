@@ -35,11 +35,11 @@ from googletrans import LANGUAGES, Translator
 from gtts import gTTS, gTTSError
 from gtts.lang import tts_langs
 from emoji import get_emoji_regexp
-from youtube_dl import YoutubeDL
-from youtube_dl.utils import (DownloadError, ContentTooShortError,
-                              ExtractorError, GeoRestrictedError,
-                              MaxDownloadsReached, PostProcessingError,
-                              UnavailableVideoError, XAttrMetadataError)
+#from youtube_dl import YoutubeDL
+#from youtube_dl.utils import (DownloadError, ContentTooShortError,
+#                              ExtractorError, GeoRestrictedError,
+#                              MaxDownloadsReached, PostProcessingError,
+#                              UnavailableVideoError, XAttrMetadataError)
 from asyncio import sleep
 from userbot import CMD_HELP, BOTLOG, BOTLOG_CHATID, YOUTUBE_API_KEY, CHROME_DRIVER, GOOGLE_CHROME_BIN, bot
 from userbot.events import register
@@ -482,69 +482,69 @@ async def lang(value):
             BOTLOG_CHATID,
             f"`Language for {scraper} changed to {LANG.title()}.`")
 
-"""
-@register(outgoing=True, pattern="^.yt (.*)")
-async def yt_search(video_q):
-    """ For .yt command, do a YouTube search from Telegram. """
-    query = video_q.pattern_match.group(1)
-    result = ''
 
-    if not YOUTUBE_API_KEY:
-        await video_q.edit(
-            "`Error: YouTube API key missing! Add it to environment vars or config.env.`"
-        )
-        return
+#@register(outgoing=True, pattern="^.yt (.*)")
+#async def yt_search(video_q):
+#    """ For .yt command, do a YouTube search from Telegram. """
+#    query = video_q.pattern_match.group(1)
+#    result = ''
+#
+#    if not YOUTUBE_API_KEY:
+#        await video_q.edit(
+#            "`Error: YouTube API key missing! Add it to environment vars or config.env.`"
+#        )
+#        return
+#
+#    await video_q.edit("```Processing...```")
+#
+#   full_response = await youtube_search(query)
+#    videos_json = full_response[1]
+#
+#    for video in videos_json:
+#        title = f"{unescape(video['snippet']['title'])}"
+#        link = f"https://youtu.be/{video['id']['videoId']}"
+#        result += f"{title}\n{link}\n\n"
+#
+#    reply_text = f"**Search Query:**\n`{query}`\n\n**Results:**\n\n{result}"
+#
+#    await video_q.edit(reply_text)
+#
+#
+#async def youtube_search(query,
+#                         order="relevance",
+#                         token=None,
+#                         location=None,
+#                         location_radius=None):
+#    """ Do a YouTube search. """
+#    youtube = build('youtube',
+#                    'v3',
+#                    developerKey=YOUTUBE_API_KEY,
+#                    cache_discovery=False)
+#    search_response = youtube.search().list(
+#        q=query,
+#        type="video",
+#        pageToken=token,
+#        order=order,
+#        part="id,snippet",
+#        maxResults=10,
+#        location=location,
+#        locationRadius=location_radius).execute()
+#
+#    videos = []
+#
+#    for search_result in search_response.get("items", []):
+#        if search_result["id"]["kind"] == "youtube#video":
+#            videos.append(search_result)
+#    try:
+#        nexttok = search_response["nextPageToken"]
+#        return (nexttok, videos)
+#    except HttpError:
+#        nexttok = "last_page"
+#        return (nexttok, videos)
+#    except KeyError:
+#        nexttok = "KeyError, try again."
+#        return (nexttok, videos)
 
-    await video_q.edit("```Processing...```")
-
-    full_response = await youtube_search(query)
-    videos_json = full_response[1]
-
-    for video in videos_json:
-        title = f"{unescape(video['snippet']['title'])}"
-        link = f"https://youtu.be/{video['id']['videoId']}"
-        result += f"{title}\n{link}\n\n"
-
-    reply_text = f"**Search Query:**\n`{query}`\n\n**Results:**\n\n{result}"
-
-    await video_q.edit(reply_text)
-
-
-async def youtube_search(query,
-                         order="relevance",
-                         token=None,
-                         location=None,
-                         location_radius=None):
-    """ Do a YouTube search. """
-    youtube = build('youtube',
-                    'v3',
-                    developerKey=YOUTUBE_API_KEY,
-                    cache_discovery=False)
-    search_response = youtube.search().list(
-        q=query,
-        type="video",
-        pageToken=token,
-        order=order,
-        part="id,snippet",
-        maxResults=10,
-        location=location,
-        locationRadius=location_radius).execute()
-
-    videos = []
-
-    for search_result in search_response.get("items", []):
-        if search_result["id"]["kind"] == "youtube#video":
-            videos.append(search_result)
-    try:
-        nexttok = search_response["nextPageToken"]
-        return (nexttok, videos)
-    except HttpError:
-        nexttok = "last_page"
-        return (nexttok, videos)
-    except KeyError:
-        nexttok = "KeyError, try again."
-        return (nexttok, videos)
-"""
 
 @register(outgoing=True, pattern=r".rip(audio|video) (.*)")
 async def download_video(v_url):
@@ -722,8 +722,8 @@ CMD_HELP.update({
     '.trt <text> [or reply]\
         \nUsage: Translates text to the language which is set.\nUse .lang trt <language code> to set language for trt. (Default is English)'
 })
-CMD_HELP.update({'yt': '.yt <text>\
-        \nUsage: Does a YouTube search.'})
+"""CMD_HELP.update({'yt': '.yt <text>\
+        \nUsage: Does a YouTube search.'})"""
 CMD_HELP.update(
     {"imdb": ".imdb <movie-name>\nShows movie info and other stuff."})
 CMD_HELP.update({
