@@ -48,7 +48,6 @@ git+https://github.com/johnwmillr/LyricsGenius.git
 lyricsgenius
 redis>=3.3.10
 beautifulsoup4>=4.8.1
-youtube-dl>=2019.9.28
 PyGithub
 PyDrive2
 pyDownload
@@ -66,7 +65,6 @@ pyfiglet
 jotquote
 csvfaker
 pymongo[srv]
-youtube_search
 numpy>=1.11.1
 colour
 geopy
