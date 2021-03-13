@@ -65,6 +65,6 @@ pyfiglet
 jotquote
 csvfaker
 pymongo[srv]
-numpy== ?
+numpy==1.20.1
 colour
 geopy
