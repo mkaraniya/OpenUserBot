@@ -3,6 +3,7 @@ aiohttp
 async_generator
 asyncurban
 cowpy
+Rust>=1.41.0
 TgCrypto>=1.2.0
 cffi>=1.0.0
 wget 
