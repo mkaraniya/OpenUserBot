@@ -1,9 +1,9 @@
-#wheel
+wheel
 aiohttp
 async_generator
 asyncurban
 cowpy
-#TgCrypto>=1.2.0
+gCrypto>=1.2.0
 cffi>=1.0.0
 wget 
 dnspython
@@ -52,7 +52,7 @@ PyGithub
 PyDrive2
 pyDownload
 bs4
-#covid
+covid
 base
 pip>=19.2.3
 selenium>=3.141.0
@@ -66,5 +66,6 @@ jotquote
 csvfaker
 pymongo[srv]
 #numpy==1.20.1
-#colour
-#geopy
+colour
+geopy
+cryptography
