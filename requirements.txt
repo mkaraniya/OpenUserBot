@@ -1,4 +1,4 @@
-wheel
+#wheel
 aiohttp
 async_generator
 asyncurban
@@ -52,7 +52,7 @@ PyGithub
 PyDrive2
 pyDownload
 bs4
-covid
+#covid
 base
 pip>=19.2.3
 selenium>=3.141.0
