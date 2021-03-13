@@ -66,5 +66,5 @@ jotquote
 csvfaker
 pymongo[srv]
 #numpy==1.20.1
-colour
-geopy
+#colour
+#geopy
