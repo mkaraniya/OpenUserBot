@@ -3,7 +3,7 @@ aiohttp
 async_generator
 asyncurban
 cowpy
-TgCrypto>=1.2.0
+#TgCrypto>=1.2.0
 cffi>=1.0.0
 wget 
 dnspython
@@ -65,6 +65,6 @@ pyfiglet
 jotquote
 csvfaker
 pymongo[srv]
-numpy>=1.11.1
+numpy=1.11.1
 colour
 geopy
