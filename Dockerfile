@@ -22,7 +22,7 @@ RUN apt update && apt upgrade -y && \
     libxml2-dev \
     libxslt-dev \
     linux-headers \
-    # musl \
+    musl \
     neofetch \
     openssl-dev \
     postgresql \
@@ -48,7 +48,7 @@ RUN apt update && apt upgrade -y && \
     chromium-chromedriver \
     zlib-dev \
     jpeg 
-    musl-dev \
+    # musl-dev \
     atomicparsley \
     && rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
 
