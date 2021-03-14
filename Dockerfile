@@ -49,7 +49,7 @@ RUN apt update && apt upgrade -y && \
         musl-dev \
         atomicparsley \
         neofetch \
-    && rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
+#    && rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
 
 COPY . /usr/src/app/OpenUserBot/
 WORKDIR /usr/src/app/OpenUserBot/
