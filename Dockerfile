@@ -63,14 +63,13 @@ RUN curl https://cli-assets.heroku.com/install.sh
 
 
 RUN python3 -m ensurepip \
-    # && pip install --upgrade pip  \
-    && pip3 install --upgrade pip3 setuptools \
+    && pip install --upgrade pip setuptools \
     && rm -r /usr/lib/python*/ensurepip && \
     if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
     if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi && \
     rm -r /root/.cache
 
-RUN pip install --upgrade pip
+# RUN pip install --upgrade pip
 
 
 #
