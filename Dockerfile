@@ -9,7 +9,7 @@ RUN sed -e 's;^#http\(.*\)/edge/community;http\1/edge/community;g' -i /etc/apk/r
 #
 # Installing Packages
 #
-RUN apk add --no-cache=true --install --update --upgrade \
+RUN apk add --no-cache=true --update \
     coreutils \
     bash \
     build-base \
@@ -20,6 +20,7 @@ RUN apk add --no-cache=true --install --update --upgrade \
     g++ \
     git \
     sudo \
+    aria2 \
     util-linux \
     libevent \
     jpeg-dev \
@@ -61,10 +62,10 @@ RUN apk add --no-cache=true --install --update --upgrade \
 RUN curl https://cli-assets.heroku.com/install.sh
 
 RUN python3 -m ensurepip \
-    && pip3 install --upgrade pip3 setuptools \
-    && rm -r /usr/lib/python3*/ensurepip && \
-    if [ ! -e /usr/bin/pip3 ]; then ln -s pip3 /usr/bin/pip3 ; fi && \
-    if [[ ! -e /usr/bin/python3 ]]; then ln -sf /usr/bin/python3 /usr/bin/python3; fi && \
+    && pip3 install --upgrade pip setuptools \
+    && rm -r /usr/lib/python*/ensurepip && \
+    if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
+    if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi && \
     rm -r /root/.cache
 
 
@@ -74,7 +75,7 @@ RUN python3 -m ensurepip \
 # Clone repo and prepare working directory
 #
 
-RUN git clone -b sql-extended https://github.com/mkaraniya/OpenUserBot /root/userbot
+RUN git clone -b sql-extended https://github.com/mkaraniya/openuserbot /root/userbot
 RUN mkdir /root/userbot/.bin
 WORKDIR /root/userbot/
 ENV PATH="/root/userbot/.bin:$PATH"
@@ -86,14 +87,10 @@ COPY ./sample_config.env ./userbot.session* ./config.env* /root/userbot/
 
 #
 # Install requirements
-# Install PIP packages
-RUN python3 -m pip install --upgrade pip
-RUN python3 -m pip3 install --no-warn-script-location --no-cache-dir --upgrade -r requirements.txt
-
-# Cleanup
-RUN rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
-
-#CMD ["python3","-m","userbot"]
-ENTRYPOINT ["python3", "-m", "userbot"]
-
+#
+RUN pip3 install -r requirements.txt
+CMD ["bash","sessions/redis.py"]
+CMD ["redis-server","--daemonize","yes"]
+CMD ["bash","init/start.sh"]
+CMD ["python3","-m","userbot"]
 
