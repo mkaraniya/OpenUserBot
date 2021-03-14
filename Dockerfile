@@ -4,8 +4,8 @@ RUN apt update && apt upgrade -y && \
     apt install --no-install-recommends -y \
         coreutils \
         bash \
-        build-base \
-        bzip2-dev \
+       # build-base \
+       # bzip2-dev \
         curl \
         figlet \
         gcc \
@@ -13,39 +13,39 @@ RUN apt update && apt upgrade -y && \
         git \
         sudo \
         util-linux \
-        libevent \
-        jpeg-dev \
+     #   libevent \
+      #  jpeg-dev \
         libffi-dev \
-        libpq \
+      #  libpq \
         libwebp-dev \
         libxml2 \
         libxml2-dev \
         libxslt-dev \
-        linux-headers \
+       # linux-headers \
         musl \
-        openssl-dev \
+      #  openssl-dev \
         postgresql \
         postgresql-client \
-        postgresql-dev \
+      #  postgresql-dev \
         openssl \
         pv \
         jq \
         wget \
-        freetype \
-        freetype-dev \
-       # python3 \
-       # python3-dev \
-        readline-dev \
+       # freetype \
+       # freetype-dev \
+        python3 \
+        python3-dev \
+      #  readline-dev \
         sqlite \
         ffmpeg \
         w3m \
-        libjpeg-turbo-dev \
-        sqlite-dev \
+     #   libjpeg-turbo-dev \
+      #  sqlite-dev \
         libc-dev \
         chromium \
-        chromium-chromedriver \
-        zlib-dev \
-        jpeg \
+     #   chromium-chromedriver \
+     #   zlib-dev \
+      #  jpeg \
         musl-dev \
         atomicparsley \
         neofetch
