@@ -17,3 +17,4 @@ speedtest-cli>=2.1.2
 https://github.com/LonamiWebs/Telethon/archive/master.zip
 wikipedia>=1.4.0
 youtube-dl>=2019.9.28
+pymongo
