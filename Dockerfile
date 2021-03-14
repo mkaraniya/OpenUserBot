@@ -61,8 +61,10 @@ RUN apk add --no-cache=true --update \
 
 RUN curl https://cli-assets.heroku.com/install.sh
 
+RUN pip install --upgrade pip \
+    && pip3 install --upgrade pip3
 RUN python3 -m ensurepip \
-    && pip install --upgrade pip  \
+    # && pip install --upgrade pip  \
     && pip3 install --upgrade pip setuptools \
     && rm -r /usr/lib/python*/ensurepip && \
     if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
