@@ -48,7 +48,6 @@ RUN apt update && apt upgrade -y && \
     chromium-chromedriver \
     zlib-dev \
     jpeg 
-    libjpeg62-turbo-dev \
     libwebp-dev \
     musl-dev \
     atomicparsley \
