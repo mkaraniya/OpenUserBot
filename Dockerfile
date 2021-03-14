@@ -46,9 +46,9 @@ RUN apt update && apt upgrade -y && \
     chromium-chromedriver \
     zlib-dev \
     jpeg \
-    # musl-dev \
-    # atomicparsley \
-    neofetch \
+    musl-dev \
+    atomicparsley \
+    neofetch 
     && rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
 
 COPY . /usr/src/app/OpenUserBot/
