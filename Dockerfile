@@ -22,7 +22,7 @@ RUN apt update && apt upgrade -y && \
     libxml2-dev \
     libxslt-dev \
     linux-headers \
-    musl \
+    # musl \
     neofetch \
     openssl-dev \
     postgresql \
