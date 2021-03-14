@@ -46,7 +46,8 @@
     },
     "GENIUS_API_TOKEN": {
       "description": "Get this value from https://genius.com/developers.",
-      "value": "0"
+      "value": "0",
+      "required": false
     },
     "MONGO_URI": {
       "description": "Your MongoDB Atlas URL, Get your guide from https://telegra.ph/Mongo-DB-12-24.",
@@ -54,7 +55,8 @@
     },
     "GENIUS": {
       "description": "Get this value from https://genius.com/developers., basically same as GENIUS_API_TOKEN.",
-      "value": "0"
+      "value": "0",
+      "required": false
     },
     "HEROKU_MEMEZ": {
       "description": "This should be True if the userbot is running on a Heroku Dyno.",
@@ -63,7 +65,8 @@
     },
     "HEROKU_API_KEY": {
       "description": "Your Heroku API key, get it from 'https://dashboard.heroku.com/account'",
-      "value": ""
+      "value": "",
+      "required": false
     },
     "HEROKU_APP_NAME": {
       "description": "Add the Heroku app name here. It helps with userbot updates.",
@@ -71,7 +74,8 @@
     },
     "GITHUB_ACCESS_TOKEN": {
       "description": "Your GITHUB_ACCESS_TOKEN, get it from 'https://github.com/settings/tokens'",
-      "value": ""
+      "value": "",
+      "required": false
     },
     "GIT_REPO_NAME": {
       "description": "Add the GIT_REPO_NAME here. It helps with commit on GitHub.",
