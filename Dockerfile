@@ -4,6 +4,7 @@ RUN apt update && apt upgrade -y && \
     apt install --no-install-recommends -y \
         bash \
         curl \
+        coreutils \
         ffmpeg \
         git \
         gcc \
