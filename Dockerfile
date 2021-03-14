@@ -87,6 +87,7 @@ COPY ./sample_config.env ./userbot.session* ./config.env* /root/userbot/
 #
 # Install requirements
 # Install PIP packages
+RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip3 install --no-warn-script-location --no-cache-dir --upgrade -r requirements.txt
 
 # Cleanup
