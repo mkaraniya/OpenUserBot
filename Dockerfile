@@ -33,8 +33,8 @@ RUN apt update && apt upgrade -y && \
         wget \
         freetype \
         freetype-dev \
-        python3 \
-        python3-dev \
+       # python3 \
+       # python3-dev \
         readline-dev \
         sqlite \
         ffmpeg \
