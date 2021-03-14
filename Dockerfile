@@ -62,9 +62,9 @@ RUN curl https://cli-assets.heroku.com/install.sh
 
 RUN python3 -m ensurepip3 \
     && pip3 install --upgrade pip3 setuptools \
-    && rm -r /usr/lib/python*/ensurepip && \
+    && rm -r /usr/lib/python3*/ensurepip && \
     if [ ! -e /usr/bin/pip3 ]; then ln -s pip3 /usr/bin/pip3 ; fi && \
-    if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi && \
+    if [[ ! -e /usr/bin/python3 ]]; then ln -sf /usr/bin/python3 /usr/bin/python3; fi && \
     rm -r /root/.cache
 
 
@@ -93,6 +93,6 @@ RUN python3 -m pip3 install --no-warn-script-location --no-cache-dir --upgrade -
 RUN rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
 
 #CMD ["python3","-m","userbot"]
-ENTRYPOINT ["python", "-m", "userbot"]
+ENTRYPOINT ["python3", "-m", "userbot"]
 
 
