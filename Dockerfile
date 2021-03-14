@@ -1,100 +1,35 @@
-# We're using Alpine Edge
-FROM alpine:edge
+FROM python:3-slim-buster
 
-#
-# We have to uncomment Community repo for some packages
-#
-RUN sed -e 's;^#http\(.*\)/edge/community;http\1/edge/community;g' -i /etc/apk/repositories
+RUN apt update && apt upgrade -y && \
+    apt install --no-install-recommends -y \
+        bash \
+        curl \
+        ffmpeg \
+        git \
+        gcc \
+        libjpeg62-turbo-dev \
+        libwebp-dev \
+        musl-dev \
+        atomicparsley \
+        neofetch \
+        && rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
 
-#
-# Installing Packages
-#
-RUN apk add --no-cache=true --update \
-    rust \
-    coreutils \
-    bash \
-    build-base \
-    bzip2-dev \
-    curl \
-    figlet \
-    gcc \
-    g++ \
-    git \
-    sudo \
-    aria2 \
-    util-linux \
-    libevent \
-    jpeg-dev \
-    libffi-dev \
-    libpq \
-    libwebp-dev \
-    libxml2 \
-    libxml2-dev \
-    libxslt-dev \
-    linux-headers \
-    musl \
-    neofetch \
-    openssl-dev \
-    postgresql \
-    postgresql-client \
-    postgresql-dev \
-    openssl \
-    pv \
-    jq \
-    wget \
-    freetype \
-    freetype-dev \
-    python3 \
-    python3-dev \
-    readline-dev \
-    sqlite \
-    ffmpeg \
-    w3m \
-    libjpeg-turbo-dev \
-    sqlite-dev \
-    libc-dev \
-    sudo \
-    chromium \
-    chromium-chromedriver \
-    zlib-dev \
-    jpeg 
-    #
+COPY . /usr/src/app/OpenUserBot/
+WORKDIR /usr/src/app/OpenUserBot/
 
-RUN curl https://cli-assets.heroku.com/install.sh
+# "Dirty Fix" for Heroku Dynos to track updates via 'git'.
+# Fork/Clone maintainers may change the clone URL to match
+# the location of their repository. [#ThatsHerokuForYa!]
+RUN if [ ! -d /usr/src/app/OpenUserBot/.git ] ; then \
+    git clone "https://github.com/mkaraniya/OpenUserBot.git" /tmp/dirty/OpenUserBot/ && \
+    mv -v -u /tmp/dirty/OpenUserBot/.git /usr/src/app/OpenUserBot/ && \
+    rm -rf /tmp/dirty/OpenUserBot/; \
+    fi
 
+# Install PIP packages
+RUN python3 -m pip install --no-warn-script-location --no-cache-dir --upgrade -r requirements.txt
 
-RUN python3 -m ensurepip \
-    && pip3 install --upgrade pip setuptools \
-    && pip3 install --upgrade pip \
-    && rm -r /usr/lib/python*/ensurepip && \
-    if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
-    if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi && \
-    rm -r /root/.cache
+# Cleanup
+RUN rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
 
-# RUN pip install --upgrade pip
-
-
-#
-# Clone repo and prepare working directory
-#
-
-RUN git clone -b sql-extended https://github.com/mkaraniya/openuserbot /root/userbot
-RUN mkdir /root/userbot/.bin
-WORKDIR /root/userbot/
-ENV PATH="/root/userbot/.bin:$PATH"
-WORKDIR /root/userbot/
-#
-# Copies session and config (if it exists)
-#
-COPY ./sample_config.env ./userbot.session* ./config.env* /root/userbot/
-
-#
-# Install requirements
-#
-RUN pip install --upgrade pip
-RUN pip3 install -r requirements.txt
-CMD ["bash","sessions/redis.py"]
-CMD ["redis-server","--daemonize","yes"]
-CMD ["bash","init/start.sh"]
-CMD ["python3","-m","userbot"]
-
+ENTRYPOINT ["python", "-m", "userbot"]
