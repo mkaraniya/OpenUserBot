@@ -23,7 +23,6 @@ RUN apt update && apt upgrade -y && \
     libxslt-dev \
     linux-headers \
     musl \
-    neofetch \
     openssl-dev \
     postgresql \
     postgresql-client \
@@ -46,9 +45,10 @@ RUN apt update && apt upgrade -y && \
     chromium \
     chromium-chromedriver \
     zlib-dev \
-    jpeg 
+    jpeg \
     # musl-dev \
     # atomicparsley \
+    neofetch \
     && rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
 
 COPY . /usr/src/app/OpenUserBot/
