@@ -2,7 +2,7 @@ FROM python:3-slim-buster
 
 RUN apt update && apt upgrade -y && \
     apt install --no-install-recommends -y \
-        coreutils \
+    coreutils \
     bash \
     build-base \
     bzip2-dev \
