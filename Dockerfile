@@ -10,7 +10,7 @@ RUN sed -e 's;^#http\(.*\)/edge/community;http\1/edge/community;g' -i /etc/apk/r
 # Installing Packages
 #
 RUN apk add --no-cache=true --update \
-    cryptography \
+    rust \
     coreutils \
     bash \
     build-base \
