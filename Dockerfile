@@ -43,13 +43,12 @@ RUN apt update && apt upgrade -y && \
     libjpeg-turbo-dev \
     sqlite-dev \
     libc-dev \
-    sudo \
     chromium \
     chromium-chromedriver \
     zlib-dev \
     jpeg 
     # musl-dev \
-    atomicparsley \
+    # atomicparsley \
     && rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
 
 COPY . /usr/src/app/OpenUserBot/
