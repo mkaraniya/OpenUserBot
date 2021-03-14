@@ -9,7 +9,7 @@ RUN sed -e 's;^#http\(.*\)/edge/community;http\1/edge/community;g' -i /etc/apk/r
 #
 # Installing Packages
 #
-RUN apk add --no-cache=true --install --update \
+RUN apk add --no-cache=true --update \
     coreutils \
     bash \
     build-base \
@@ -86,8 +86,13 @@ COPY ./sample_config.env ./userbot.session* ./config.env* /root/userbot/
 
 #
 # Install requirements
-#
-RUN pip3 install -r requirements.txt
-CMD ["python3","-m","userbot"]
+# Install PIP packages
+RUN python3 -m pip install --no-warn-script-location --no-cache-dir --upgrade -r requirements.txt
+
+# Cleanup
+RUN rm -rf /var/lib/apt/lists /var/cache/apt/archives /tmp
+
+#CMD ["python3","-m","userbot"]
+ENTRYPOINT ["python", "-m", "userbot"]
 
 
