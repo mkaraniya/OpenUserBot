@@ -3,7 +3,6 @@ aiohttp
 async_generator
 asyncurban
 cowpy
-rust>=1.0.0
 TgCrypto>=1.2.0
 cffi>=1.0.0
 wget 
@@ -69,4 +68,4 @@ pymongo[srv]
 #numpy==1.20.1
 colour
 geopy
-cryptography>=2.7
+#cryptography>=2.7
