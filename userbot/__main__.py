@@ -23,9 +23,10 @@ except PhoneNumberInvalidError:
     print(INVALID_PH)
     exit(1)
 """
-
+"""
 for module_name in ALL_MODULES:
     imported_module = import_module("userbot.modules." + module_name)
+"""
 
 LOGS.info("You are running OpenUserBot [v7.7.7]")
 
