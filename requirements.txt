@@ -2,16 +2,16 @@
 asyncurban>=0.3.3
 beautifulsoup4>=4.8.1
 # covid>=2.2.9
-cowpy>=1.1.0
+# cowpy>=1.1.0
 TgCrypto>=1.2.2
 dill>=0.3.1.1
 gitpython>=3.0.3
-hachoir>=3.0a5
+# hachoir>=3.0a5
 #heroku3>=3.4.0
 #hiredis>=1.0.0
 meval>=2.5
 Pillow>=6.0.0
-redis>=3.3.10
+# redis>=3.3.10
 requests>=2.22.0
 speedtest-cli>=2.1.2
 https://github.com/LonamiWebs/Telethon/archive/master.zip
@@ -22,7 +22,7 @@ async_generator
 cffi>=1.0.0
 wget 
 dnspython
-numpy
+# numpy
 emoji
 gitpython
 google-api-python-client>=1.8.0
