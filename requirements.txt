@@ -1,5 +1,5 @@
 # aiohttp[speedups]>=3.5.4
-asyncurban>=0.3.3
+# asyncurban>=0.3.3
 beautifulsoup4>=4.8.1
 # covid>=2.2.9
 # cowpy>=1.1.0
@@ -7,8 +7,8 @@ beautifulsoup4>=4.8.1
 dill>=0.3.1.1
 gitpython>=3.0.3
 # hachoir>=3.0a5
-#heroku3>=3.4.0
-#hiredis>=1.0.0
+# heroku3>=3.4.0
+# hiredis>=1.0.0
 meval>=2.5
 Pillow>=6.0.0
 # redis>=3.3.10
@@ -53,8 +53,8 @@ telethon>=1.10.6
 telethon-session-sqlalchemy>=0.2.6
 urbandict>=0.5
 coffeehouse>=2.1.0
-git+https://github.com/johnwmillr/LyricsGenius.git
-lyricsgenius
+# git+https://github.com/johnwmillr/LyricsGenius.git
+# lyricsgenius
 PyGithub
 PyDrive2
 pyDownload
