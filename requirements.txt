@@ -5,7 +5,7 @@ beautifulsoup4>=4.8.1
 # cowpy>=1.1.0
 # TgCrypto>=1.2.2
 dill>=0.3.1.1
-gitpython>=3.0.3
+gitpython>=3.10.11
 # hachoir>=3.0a5
 # heroku3>=3.4.0
 # hiredis>=1.0.0
@@ -13,14 +13,14 @@ meval>=2.5
 Pillow>=6.0.0
 # redis>=3.3.10
 requests>=2.22.0
-speedtest-cli>=2.1.2
+# speedtest-cli>=2.1.2
 https://github.com/LonamiWebs/Telethon/archive/master.zip
-wikipedia>=1.4.0
+# wikipedia>=1.4.0
 #
 wheel
 async_generator
 # cffi>=1.0.0
-wget 
+# wget 
 dnspython
 # numpy
 emoji
