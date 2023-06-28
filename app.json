@@ -1,6 +1,6 @@
 {
   "name": "Telegram Open User Bot",
-  "description": "[OpenUserBot] A modular Telegram userbot running on Python 3.7+ with an sqlalchemy database, which can be coupled up with Mongo DB and a Redis backend",
+  "description": "[OpenUserBot] A modular Telegram userbot running on Python 3.10+ with an sqlalchemy database, which can be coupled up with Mongo DB and a Redis backend",
   "logo": "https://telegra.ph/file/d04a1724c6dd8a957bd0e.png",
   "keywords": [
     "telegram",
@@ -219,26 +219,9 @@
       "value": "True"
     }
   },
-  "addons": [
-    {
-      "plan": "heroku-postgresql",
-      "options": {
-        "version": "12"
-      }
-    }
-  ],"buildpacks": [{
-    "url": "https://github.com/heroku/heroku-buildpack-python.git"
-  }, {
-    "url": "https://github.com/heroku/heroku-buildpack-redis"
-  }, {
-    "url": "https://github.com/heroku/heroku-buildpack-google-chrome"
-  }, {
-    "url": "https://github.com/HasibulKabir/heroku-buildpack-rarlab"
-  },{
-    "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
-  }, {
-    "url": "https://github.com/opendoor-labs/heroku-buildpack-p7zip"
-  }, {
-    "url": "https://github.com/stevo550/buildpack-slug-cleaner"
-  }]
-}
+ 
+ // Set Port
+app.set('port', (process.env.PORT || 3000));
+app.listen(app.get('port'), function() {
+    console.log('Server started on port '+app.get('port'));
+});
