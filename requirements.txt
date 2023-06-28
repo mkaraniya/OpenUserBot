@@ -27,29 +27,29 @@ async_generator
 # numpy
 # emoji
 # gitpython
-google-api-python-client>=1.8.0
-google-auth-oauthlib
-googletrans>=2.4.0
-google_images_download>=2.7.1
-git+https://github.com/voins/google-images-download.git@2cd68173c961324a2c41c61e8b6f40a49663ce60
-gTTS>=2.1.1
-gTTS-token>=1.1.3
+# google-api-python-client>=1.8.0
+# google-auth-oauthlib
+# googletrans>=2.4.0
+# google_images_download>=2.7.1
+# git+https://github.com/voins/google-images-download.git@2cd68173c961324a2c41c61e8b6f40a49663ce60
+# gTTS>=2.1.1
+# gTTS-token>=1.1.3
 # REPO_LINK
-httplib2>=0.18.0
+# httplib2>=0.18.0
 # psutil
 # humanize
 # lxml
 oauth2client
 # psycopg2
-psycopg2-binary
-pybase64>=0.4.0
-pylast
-pySmartDL
-python-barcode
-python-dotenv
-pytz
-qrcode
-search-engine-parser>=0.4.2
+# psycopg2-binary
+# pybase64>=0.4.0
+# pylast
+# pySmartDL
+# python-barcode
+# python-dotenv
+# pytz
+# qrcode
+# search-engine-parser>=0.4.2
 # sqlalchemy>=1.2
 # telethon>=1.10.6
 # telethon-session-sqlalchemy>=0.2.6
@@ -58,18 +58,18 @@ search-engine-parser>=0.4.2
 # git+https://github.com/johnwmillr/LyricsGenius.git
 # lyricsgenius
 PyGithub
-PyDrive2
-pyDownload
-bs4
-base
-pip>=19.2.3
+# PyDrive2
+# pyDownload
+# bs4
+# base
+# pip>=19.2.3
 # selenium>=3.141.0
 # git+https://github.com/LonamiWebs/Telethon
 # git+https://github.com/ahupp/python-magic
 # pytube>=9.5.1
-telegraph
+# telegraph
 # python-dateutil
 # pyfiglet   
 # jotquote
 # csvfaker
-pymongo[srv]
+# pymongo[srv]
