@@ -16,7 +16,7 @@ Pillow>=6.0.0
 # redis>=3.3.10
  requests>=2.22.0
 # speedtest-cli>=2.1.2
- # https://github.com/LonamiWebs/Telethon/archive/master.zip
+ https://github.com/LonamiWebs/Telethon/archive/master.zip
 # wikipedia>=1.4.0
 #
 # wheel
@@ -28,7 +28,7 @@ async_generator
 # emoji
  gitpython
  google-api-python-client>=1.8.0
-# google-auth-oauthlib
+ google-auth-oauthlib
 # googletrans>=2.4.0
 # google_images_download>=2.7.1
 # git+https://github.com/voins/google-images-download.git@2cd68173c961324a2c41c61e8b6f40a49663ce60
@@ -44,15 +44,15 @@ oauth2client
  psycopg2-binary
  pybase64>=0.4.0
  pylast
-# pySmartDL
-# python-barcode
-# python-dotenv
+ pySmartDL
+ python-barcode
+ python-dotenv
 # pytz
 # qrcode
 # search-engine-parser>=0.4.2
  sqlalchemy>=1.2
-# telethon>=1.10.6
-# telethon-session-sqlalchemy>=0.2.6
+ telethon>=1.10.6
+ telethon-session-sqlalchemy>=0.2.6
 # urbandict>=0.5
 # coffeehouse>=2.1.0
 # git+https://github.com/johnwmillr/LyricsGenius.git
@@ -62,7 +62,7 @@ PyGithub
 # pyDownload
  bs4
  base
-# pip>=19.2.3
+ pip>=19.2.3
  selenium>=3.141.0
 # git+https://github.com/LonamiWebs/Telethon
  git+https://github.com/ahupp/python-magic
