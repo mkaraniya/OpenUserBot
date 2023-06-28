@@ -1,4 +1,4 @@
-# aiohttp[speedups]>=3.5.4
+ aiohttp[speedups]>=3.5.4
 # asyncurban>=0.3.3
  beautifulsoup4>=4.8.1
 # covid>=2.2.9
@@ -58,18 +58,18 @@ oauth2client
 # git+https://github.com/johnwmillr/LyricsGenius.git
 # lyricsgenius
 PyGithub
-# PyDrive2
-# pyDownload
+ PyDrive2
+ pyDownload
  bs4
  base
  pip>=19.2.3
  selenium>=3.141.0
-# git+https://github.com/LonamiWebs/Telethon
+ git+https://github.com/LonamiWebs/Telethon
  git+https://github.com/ahupp/python-magic
-# pytube>=9.5.1
+ pytube>=9.5.1
 # telegraph
  python-dateutil
-# pyfiglet   
+ pyfiglet   
 # jotquote
 # csvfaker
 pymongo[srv]
