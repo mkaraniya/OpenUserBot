@@ -72,4 +72,4 @@ PyGithub
 # pyfiglet   
 # jotquote
 # csvfaker
-# pymongo[srv]
+pymongo[srv]
