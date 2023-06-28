@@ -1,4 +1,4 @@
- aiohttp[speedups]>=3.5.4
+# aiohttp[speedups]>=3.5.4
 # asyncurban>=0.3.3
  beautifulsoup4>=4.8.1
 # covid>=2.2.9
@@ -16,7 +16,7 @@ Pillow>=6.0.0
 # redis>=3.3.10
  requests>=2.22.0
 # speedtest-cli>=2.1.2
- https://github.com/LonamiWebs/Telethon/archive/master.zip
+ # https://github.com/LonamiWebs/Telethon/archive/master.zip
 # wikipedia>=1.4.0
 #
 # wheel
