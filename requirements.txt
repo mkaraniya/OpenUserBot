@@ -8,6 +8,7 @@ dill>=0.3.1.1
 # gitpython>=3.1.31
 # hachoir>=3.0a5
 cyclic
+boto3
 # heroku3>=3.4.0
 # hiredis>=1.0.0
 meval>=2.5
